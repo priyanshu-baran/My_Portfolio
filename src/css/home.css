@@ -1,0 +1,428 @@
+/* ::selection {
+  background-color: #0b372dbb;
+} */
+
+.logo {
+  position: absolute;
+  top: 20px;
+  left: 150px;
+  width: 200px;
+}
+
+.img_header {
+  position: absolute;
+  z-index: 9999;
+  width: 100%;
+  padding: 0.9rem 0;
+  top: 0;
+  left: 0;
+}
+
+main {
+  position: relative;
+  background-color: #353;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.parallax {
+  position: absolute;
+  pointer-events: none;
+  transition: 0.45s cubic-bezier(0.2, 0.49, 0.32, 0.99);
+}
+
+.bg-img {
+  z-index: 1;
+  width: 145.83%;
+  top: 7.14%;
+  left: 50.52%;
+}
+
+.fog-7 {
+  z-index: 2;
+  width: 98.958%;
+  top: 39.01%;
+  left: 65.625%;
+}
+
+.mountain-10 {
+  z-index: 3;
+  width: 46.458%;
+  top: 57.58%;
+  left: 62%;
+}
+
+.fog-6 {
+  z-index: 4;
+  width: 83.85%;
+  top: 59.34%;
+  left: 50.52%;
+}
+
+.mountain-9 {
+  z-index: 5;
+  width: 26.04%;
+  top: 63.736%;
+  left: 21.875%;
+}
+
+.mountain-8 {
+  z-index: 6;
+  width: 42.1875%;
+  top: 65.934%;
+  left: 38.54%;
+}
+
+.fog-5 {
+  z-index: 7;
+  width: 23.4375%;
+  top: 67.58%;
+  left: 51.04%;
+}
+
+.mountain-7 {
+  z-index: 8;
+  width: 28.02%;
+  top: 63.516%;
+  left: 65.88%;
+}
+
+.text {
+  z-index: 9;
+  top: 33%;
+  left: 50%;
+  width: 100%;
+  text-align: center;
+  color: white;
+  text-transform: uppercase;
+  pointer-events: auto;
+}
+
+.text h2 {
+  font-weight: 500;
+  font-size: 6rem;
+  line-height: 0.88;
+  /* color: transparent;
+  background-image: linear-gradient(#FFC107, #9C27B0);
+  -webkit-background-clip: text;
+  background-clip: text; */
+}
+
+.text h1 {
+  font-weight: 600;
+  font-size: 5.25rem;
+  line-height: 0.88;
+  /* color: transparent;
+  background-image: linear-gradient(#F44336, #00BCD4, #FF5722);
+  -webkit-background-clip: text;
+  background-clip: text; */
+}
+
+.text h3 {
+  font-weight: 600;
+  font-size: 3.5rem;
+  line-height: 0.88;
+  /* color: transparent;
+  background-image: linear-gradient(#F44336, #FFEB3B);
+  -webkit-background-clip: text;
+  background-clip: text; */
+}
+
+.mountain-6 {
+  z-index: 10;
+  width: 21.25%;
+  top: 55.59%;
+  left: 80.73%;
+}
+
+.fog-4 {
+  z-index: 11;
+  width: 30.73%;
+  top: 74.505%;
+  left: 46.875;
+}
+
+.mountain-5 {
+  z-index: 12;
+  width: 32.55%;
+  top: 80.769%;
+  left: 53.9%;
+}
+
+.fog-3 {
+  z-index: 13;
+  width: 83.33%;
+  top: 62.08%;
+  left: 49.22%;
+}
+
+.mountain-4 {
+  z-index: 14;
+  width: 41.67%;
+  top: 73.07%;
+  left: 30.13%;
+}
+
+.mountain-3 {
+  z-index: 15;
+  width: 27.08%;
+  top: 64.61%;
+  left: 89.06%;
+}
+
+.fog-2 {
+  z-index: 16;
+  width: 83.33%;
+  top: 66.15%;
+  left: 48.4375%;
+}
+
+.mountain-2 {
+  z-index: 17;
+  width: 35.9375%;
+  top: 66.92%;
+  left: 71.45%;
+}
+
+.mountain-1 {
+  z-index: 18;
+  width: 33.85%;
+  top: 51.868%;
+  left: 9.375%;
+}
+
+.sun-rays {
+  position: absolute;
+  z-index: 19;
+  width: 31%;
+  top: 0;
+  right: 0;
+  pointer-events: none;
+}
+
+.black-shadow {
+  position: absolute;
+  z-index: 20;
+  width: 100%;
+  bottom: 0;
+  right: 0;
+  pointer-events: none;
+}
+
+.fog-1 {
+  z-index: 21;
+  width: 130.21%;
+  top: 61%;
+  left: 50%;
+}
+
+.vignette {
+  position: absolute;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: radial-gradient(ellipse at center, rgba(0, 0, 0, 0), 65%, rgba(0, 0, 0, 0.7));
+  pointer-events: none;
+}
+
+@media (max-width:1500px) {
+  .text h2 {
+    font-size: 5.5rem;
+  }
+
+  .text h1 {
+    font-size: 4.75rem;
+  }
+
+  .text h3 {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width:1100px) {
+  .text h2 {
+    font-size: 4.75rem;
+  }
+
+  .text h1 {
+    font-size: 4rem;
+  }
+
+  .text h3 {
+    font-size: 2.25rem;
+  }
+
+  .bg-img {
+    width: initial;
+    height: 233.328%;
+  }
+
+  .fog-7 {
+    width: initial;
+    height: 158.3328%;
+  }
+
+  .mountain-10 {
+    width: initial;
+    height: 74.3328%;
+  }
+
+  .fog-6 {
+    width: initial;
+    height: 134.16%;
+  }
+
+  .mountain-9 {
+    width: initial;
+    height: 41.664;
+  }
+
+  .mountain-8 {
+    width: initial;
+    height: 67.5%;
+  }
+
+  .fog-5 {
+    width: initial;
+    height: 37.5%;
+  }
+
+  .mountain-7 {
+    width: initial;
+    height: 44.832%;
+  }
+
+  .mountain-6 {
+    width: initial;
+    height: 34%;
+  }
+
+  .fog-4 {
+    width: initial;
+    height: 49.168%;
+  }
+
+  .mountain-5 {
+    width: initial;
+    height: 52.08%;
+  }
+
+  .fog-3 {
+    width: initial;
+    height: 133.328%;
+  }
+
+  .mountain-4 {
+    width: initial;
+    height: 66.672%;
+  }
+
+  .mountain-3 {
+    width: initial;
+    height: 43.328%;
+  }
+
+  .fog-2 {
+    width: initial;
+    height: 133.328%;
+  }
+
+  .mountain-2 {
+    width: initial;
+    height: 57.5%;
+  }
+
+  .mountain-1 {
+    width: initial;
+    height: 54.16%;
+  }
+
+  .sun-rays {
+    width: initial;
+    height: 49.6%;
+  }
+
+  .fog-1 {
+    width: initial;
+    height: 208.336%;
+  }
+}
+
+@media (max-width:500px) {
+  .text h2 {
+    font-size: 4rem;
+  }
+
+  .text h1 {
+    font-size: 3.25rem;
+  }
+
+  .text h3 {
+    font-size: 1.5rem;
+  }
+
+  .logo {
+    width: 125px;
+    left: 0;
+  }
+}
+
+.cssbuttons-io-button {
+  background: #A370F0;
+  color: white;
+  font-family: inherit;
+  padding: 0.35em;
+  padding-left: 1.2em;
+  font-size: 17px;
+  font-weight: 500;
+  border-radius: 0.9em;
+  border: none;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  box-shadow: inset 0 0 1.6em -0.6em #714da6;
+  overflow: hidden;
+  position: relative;
+  top: 50px;
+  left: 900px;
+  height: 2.8em;
+  padding-right: 3.3em;
+}
+
+/* Visit https://democoding.in/ for more animation */
+
+.cssbuttons-io-button .btn_icon {
+  background: white;
+  margin-left: 1em;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.2em;
+  width: 2.2em;
+  border-radius: 0.7em;
+  box-shadow: 0.1em 0.1em 0.6em 0.2em #7b52b9;
+  right: 0.3em;
+  transition: all 0.3s;
+}
+
+.cssbuttons-io-button:hover .btn_icon {
+  width: calc(100% - 0.6em);
+}
+
+.cssbuttons-io-button .btn_icon svg {
+  width: 1.1em;
+  transition: transform 0.3s;
+  color: #7b52b9;
+}
+
+.cssbuttons-io-button:hover .btn_icon svg {
+  transform: translateX(0.1em);
+}
+
+.cssbuttons-io-button:active .btn_icon {
+  transform: scale(0.95);
+}
