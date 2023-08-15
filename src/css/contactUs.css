@@ -1,0 +1,223 @@
+.cu_body {
+  position: relative;
+  z-index: 0;
+  height: 80vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 50px;
+}
+
+.cu_container {
+  z-index: 1;
+  width: 60%;
+  background: #fff;
+  border-radius: 6px;
+  padding: 20px 60px 30px 40px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.cu_container .cu_content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cu_container .cu_content .left-side {
+  width: 25%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+  position: relative;
+}
+
+.cu_content .left-side::before {
+  content: '';
+  position: absolute;
+  height: 70%;
+  width: 2px;
+  right: -15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #afafb6;
+}
+
+.cu_content .left-side .cu_details {
+  margin: 14px;
+  text-align: center;
+}
+
+.cu_content .left-side .cu_details i {
+  font-size: 30px;
+  color: #3e2093;
+  margin-bottom: 10px;
+}
+
+.cu_content .left-side .cu_details .topic {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.cu_content .left-side .cu_details .text-one,
+.cu_content .left-side .cu_details .text-two {
+  font-size: 14px;
+  color: #afafb6;
+}
+
+.cu_container .cu_content .right-side {
+  width: 75%;
+  margin-left: 75px;
+}
+
+.cu_content .right-side .topic-text {
+  font-size: 23px;
+  font-weight: 600;
+  color: #3e2093;
+}
+
+@media (max-width: 950px) {
+  .cu_container {
+    width: 90%;
+    padding: 30px 40px 40px 35px;
+  }
+
+  .cu_container .cu_content .right-side {
+    width: 75%;
+    margin-left: 55px;
+  }
+}
+
+@media (max-width: 850px) {
+  .cu_container {
+    margin: 40px 0;
+    height: 100%;
+  }
+
+  .cu_container .cu_content {
+    flex-direction: column-reverse;
+  }
+
+  .cu_container .cu_content .left-side {
+    width: 100%;
+    flex-direction: row;
+    margin-top: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cu_container .cu_content .left-side::before {
+    display: none;
+  }
+
+  .cu_container .cu_content .right-side {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+.right-side .cu_input-box {
+  height: 50px;
+  width: 100%;
+  margin: 16px 0;
+  position: relative;
+}
+
+.right-side .cu_input-box input {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 6px;
+  font-size: 16px;
+  outline: none;
+  padding-left: 16px;
+  background: #fae9fb;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.right-side .cu_input-box input:focus,
+.right-side .cu_input-box input:valid {
+  border-color: #ba24c2;
+  background-color: #fff;
+}
+
+.right-side .cu_input-box label {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  color: #636c72;
+  font-size: 15px;
+  pointer-events: none;
+  transform: translateY(-50%);
+  transition: all 0.3s ease;
+}
+
+.right-side .cu_input-box input:focus~label,
+.right-side .cu_input-box input:valid~label {
+  top: 0;
+  left: 12px;
+  display: 14px;
+  color: #ba24c2;
+  background: #fff;
+}
+
+.right-side .cu_input-box input[type="submit"] {
+  color: #fff;
+  background: #ba24c2;
+  padding-left: 0;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.right-side .cu_input-box input[type="submit"]:hover {
+  background-color: #d43ddb;
+}
+
+.right-side .message-box {
+  min-height: 100px;
+  position: relative;
+}
+
+.right-side .message-box textarea {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  resize: none;
+  background: #fae9fb;
+  border: 2px solid transparent;
+  padding: 16px;
+  font-size: 16px;
+  border-radius: 6px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.right-side .message-box textarea:focus {
+  border-color: #ba24c2;
+  background-color: #fff;
+}
+
+.right-side .message-box label {
+  position: absolute;
+  font-size: 16px;
+  color: #636c72;
+  left: 18px;
+  top: 6px;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.right-side .message-box textarea:focus~label {
+  left: 12px;
+  top: -10px;
+  color: #ba24c2;
+  font-size: 14px;
+  background: #fff;
+}

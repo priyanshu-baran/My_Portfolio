@@ -9,5 +9,6 @@ import './css/main.css';
 import './css/skills.css';
 import './css/projects.css';
 import './css/about.css';
+import './css/contactUs.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(<App />);

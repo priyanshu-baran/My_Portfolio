@@ -46,7 +46,7 @@ const Docks = ({ isClicked }) => {
         window.location.href = '/main#projects';
         break;
       case 4:
-        console.log('contact');
+        window.location.href = '/main#contact';
         break;
       case 5:
         window.open('https://www.linkedin.com/in/priyanshu-baran/', '_blank');

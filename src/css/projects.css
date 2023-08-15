@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400");
+
 .blog-card {
   display: flex;
   flex-direction: column;
@@ -348,5 +350,59 @@
   .social_icons,
   .social_icons2 {
     display: block;
+  }
+}
+
+.sh_bg,
+.sh_button {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+}
+
+.sh_container {
+  display: flex;
+  width: 100%;
+  height: 10vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.sh_bg {
+  animation: pulses 1.2s ease infinite;
+  background: #ff3466;
+}
+
+.sh_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 99;
+  border: none;
+  background: #ff3466;
+  background-size: 18px;
+  outline: none;
+}
+
+.sh_button a {
+  position: absolute;
+  color: #FFF;
+  font-size: 17px;
+}
+
+@keyframes pulses {
+  0% {
+    transform: scale(1, 1);
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
   }
 }

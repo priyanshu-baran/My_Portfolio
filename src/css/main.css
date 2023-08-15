@@ -500,7 +500,7 @@ header .close:hover {
   --sizeX: 30px;
   --sizeY: 50px;
   position: absolute;
-  top: 90%;
+  top: 80%;
   left: 50%;
   width: var(--sizeX);
   height: var(--sizeY);

@@ -240,12 +240,21 @@ export const Projects = ({ isClicked }) => {
           />
         ))}
         {project_details.length > 3 && (
-          <button
+          <div
             id='showhide_btn'
-            className='showHide_btn'
+            className='sh_container'
             onClick={toggleProjectsToShow}>
-            {projectsToShow === 3 ? 'Show More' : 'Show Less'}
-          </button>
+            <div className='sh_bg'></div>
+            <div className='sh_button'>
+              <a href='#showhide_btn'>
+                <i
+                  className={`fa fa-chevron-${
+                    projectsToShow === 3 ? 'down' : 'up'
+                  }`}
+                  aria-hidden='true'></i>
+              </a>
+            </div>
+          </div>
         )}
       </div>
     </div>

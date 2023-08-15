@@ -6,6 +6,7 @@ import { Skills } from './Skills';
 import { Preloader } from './Preloader';
 import { Projects } from './Projects';
 import { About } from './About';
+import { ContactUs } from './ContactUs';
 
 export const Main = ({ isClicked, setIsClicked }) => {
   const [time, setTime] = useState('day');
@@ -13,6 +14,7 @@ export const Main = ({ isClicked, setIsClicked }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
   const [isActive, setIsActive] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const handleClick = () => {
     setTime(time === 'night' ? 'day' : 'night');
     setIsClicked(!isClicked);
@@ -68,6 +70,15 @@ export const Main = ({ isClicked, setIsClicked }) => {
       setIsLoading(false);
     }, 2000);
   }, [setIsClicked]);
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsVisible(window.scrollY === 0);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   return (
     <div>
       {isLoading ? (
@@ -234,8 +245,14 @@ export const Main = ({ isClicked, setIsClicked }) => {
             </div>
             <div
               className='scrolldown'
-              // style={{ '--color': `${isClicked ? 'coral' : ''}` }}>
-              style={{ '--color': 'yellow' }}>
+              onClick={() => {
+                window.location.href = '/main#about';
+              }}
+              style={{
+                '--color': `${isClicked ? 'yellow' : 'orangered'}`,
+                opacity: `${isVisible ? '1' : '0'}`,
+                transition: 'opacity 0.5s ease-in-out',
+              }}>
               <div className='chevrons'>
                 <div className='chevrondown'></div>
                 <div className='chevrondown'></div>
@@ -245,6 +262,7 @@ export const Main = ({ isClicked, setIsClicked }) => {
           <About isClicked={isClicked} />
           <Skills isClicked={isClicked} />
           <Projects isClicked={!isClicked} />
+          <ContactUs isClicked={!isClicked} />
         </>
       )}
     </div>

@@ -43,7 +43,7 @@ const App = () => {
                   isClicked={isClicked}
                   setIsClicked={setIsClicked}
                 />
-                {/* <Dock isClicked={isClicked} /> */}
+                <Dock isClicked={isClicked} />
               </>
             }
           />
