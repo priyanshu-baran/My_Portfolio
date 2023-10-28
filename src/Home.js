@@ -140,9 +140,7 @@ export const Home = () => {
               className='logo'
             />
           </header>
-          <main
-            className='mainEl'
-            style={{ maxHeight: `${isBigger}px` }}>
+          <main style={{ maxHeight: `${isBigger}px` }}>
             <div className='vignette hiding'></div>
             <img
               src='img/background.png'

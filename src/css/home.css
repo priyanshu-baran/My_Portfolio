@@ -103,30 +103,30 @@ main {
   font-weight: 500;
   font-size: 6rem;
   line-height: 0.88;
-  /* color: transparent;
+  color: transparent;
   background-image: linear-gradient(#FFC107, #9C27B0);
   -webkit-background-clip: text;
-  background-clip: text; */
+  background-clip: text;
 }
 
 .text h1 {
   font-weight: 600;
   font-size: 5.25rem;
   line-height: 0.88;
-  /* color: transparent;
+  color: transparent;
   background-image: linear-gradient(#F44336, #00BCD4, #FF5722);
   -webkit-background-clip: text;
-  background-clip: text; */
+  background-clip: text;
 }
 
 .text h3 {
   font-weight: 600;
   font-size: 3.5rem;
   line-height: 0.88;
-  /* color: transparent;
+  color: transparent;
   background-image: linear-gradient(#F44336, #FFEB3B);
   -webkit-background-clip: text;
-  background-clip: text; */
+  background-clip: text;
 }
 
 .mountain-6 {

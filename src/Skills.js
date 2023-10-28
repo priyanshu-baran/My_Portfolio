@@ -6,16 +6,16 @@ export const Skills = ({ isClicked }) => {
   const isInView = useInView(inView, { once: true });
   const skills_details = [
     {
-      class: 'html',
-      headline: 'HTML',
-    },
-    {
       class: 'css',
       headline: 'CSS',
     },
     {
       class: 'react',
       headline: 'React',
+    },
+    {
+      class: 'nodejs',
+      headline: 'NodeJs',
     },
     {
       class: 'mongodb',
@@ -41,6 +41,45 @@ export const Skills = ({ isClicked }) => {
           </h1>
         </a>
       </center>
+      <div
+        className='skills_bubble'
+        style={{
+          transform: isInView ? 'scale(1)' : 'scale(0)',
+          animation: isInView
+            ? 'scaleAnimation 0.8s cubic-bezier(0.17, 0.55, 0.55, 1)'
+            : 'none',
+        }}>
+        <p style={{ opacity: '0.6' }}>
+          Linode
+          <br />
+          &#10025; &#10025; &#10025;
+        </p>
+        <p style={{ top: '50px', left: '850px' }}>
+          AWS
+          <br />
+          &#10025;&#10025;&#10025;
+        </p>
+        <p style={{ top: '-350px', left: '700px' }}>
+          Firebase
+          <br />
+          &#10025;&#10025;&#10025;&#10025;
+        </p>
+        <p style={{ top: '25px', left: '500px', opacity: '0.8' }}>
+          AWS EC2
+          <br />
+          &#10025;&#10025;&#10025;&#10025;
+        </p>
+        <p style={{ top: '-75px', left: '1350px', opacity: '0.5' }}>
+          AWS Amplify
+          <br />
+          &#10025;&#10025;
+        </p>
+        <p style={{ top: '-220px', left: '50px', opacity: '1' }}>
+          MERN Stack
+          <br />
+          &#10025;&#10025;&#10025;&#10025;&#10025;
+        </p>
+      </div>
       <div className='skill_body'>
         <div
           ref={inView}

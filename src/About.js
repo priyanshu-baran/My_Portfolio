@@ -1,8 +1,17 @@
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-// sk - ISMOvbCu3ZV2BRjn9THhT3BlbkFJaOj1yzIU5f8cLPzQpmIh;
 
-const Timeline = ({ icon, title, date, content, rowStatus, isClicked }) => {
+const Timeline = ({
+  icon,
+  title,
+  date,
+  content,
+  rowStatus,
+  buttonContent,
+  buttonURL,
+  additionalContent,
+  isClicked,
+}) => {
   const inView = useRef(null);
   const isInView = useInView(inView, { once: true });
   return (
@@ -34,8 +43,17 @@ const Timeline = ({ icon, title, date, content, rowStatus, isClicked }) => {
         </div>
         <p>{content}</p>
         <div className='bottom'>
-          <a href='#about'>Read more</a>
-          <i>- Someone famous</i>
+          {buttonContent ? (
+            <a
+              href={`${buttonURL}`}
+              target='_blank'
+              rel='noreferrer'>
+              Check it out
+            </a>
+          ) : (
+            ''
+          )}
+          <i>{additionalContent}</i>
         </div>
       </section>
     </div>
@@ -46,52 +64,73 @@ export const About = ({ isClicked }) => {
   const timeline_details = [
     {
       icon: 'home',
-      title: 'Title of Section 1',
-      date: '1st Jan 2021',
+      title: '12th CBSE Board',
+      date: '2020-2021',
       content:
-        'Lorem ipsum dolor sit ameters consectetur adipisicing elit. Sed qui veroes praesentium maiores, sint eos vero sapiente voluptas debitis dicta dolore.',
+        'Completed my 12th from Mansarovar Public School, Bhopal, Madhya Pradesh.',
       rowStatus: 1,
+      buttonContent: 0,
+      buttonURL: '',
+      additionalContent: '- With an aggregate of 89%',
     },
     {
       icon: 'star',
-      title: 'Title of Section 2',
-      date: '2nd Jan 2021',
+      title: 'College Life',
+      date: '2021-2025',
       content:
-        'Lorem ipsum dolor sit ameters consectetur adipisicing elit. Sed qui veroes praesentium maiores, sint eos vero sapiente voluptas debitis dicta dolore.',
+        'Currently enrolled in the Bachelor of Engineering (B.E.) program at Chandigarh University, specializing in Electrical Engineering.',
       rowStatus: 2,
+      buttonContent: 0,
+      buttonURL: '',
+      additionalContent: '- With 8.26 CGPA till my 2nd year',
     },
     {
       icon: 'rocket',
-      title: 'Title of Section 3',
-      date: '3rd Jan 2021',
+      title: 'First Internship',
+      date: '30th Oct 2022',
       content:
-        'Lorem ipsum dolor sit ameters consectetur adipisicing elit. Sed qui veroes praesentium maiores, sint eos vero sapiente voluptas debitis dicta dolore.',
+        'Completed my first internship with Edu-versity in the domain of Embedded System.',
       rowStatus: 1,
+      buttonContent: 1,
+      buttonURL:
+        'https://drive.google.com/file/d/15xTtBfKNPZ9K3ihtYn-8YQDOUyctWQEZ/view?usp=share_link',
+      additionalContent: '',
     },
     {
       icon: 'globe',
-      title: 'Title of Section 4',
-      date: '4th Jan 2021',
+      title: 'First Appreciation Letter',
+      date: '6th Jan 2023',
       content:
-        'Lorem ipsum dolor sit ameters consectetur adipisicing elit. Sed qui veroes praesentium maiores, sint eos vero sapiente voluptas debitis dicta dolore.',
+        'Got Appreciation Letter from RCB (Royal Challengers Bangalore) for completing my first week in Code to Win Challenge.',
       rowStatus: 2,
+      buttonContent: 1,
+      buttonURL:
+        'https://drive.google.com/file/d/1M8f6ayb49fWlNU3o9qrN38fQBIbD_Fpa/view?usp=share_link',
+      additionalContent: '',
     },
     {
       icon: 'paper-plane',
-      title: 'Title of Section 5',
-      date: '5th Jan 2021',
+      title: 'College Project',
+      date: 'March-May 2023',
       content:
-        'Lorem ipsum dolor sit ameters consectetur adipisicing elit. Sed qui veroes praesentium maiores, sint eos vero sapiente voluptas debitis dicta dolore.',
+        'I collaborated with my colleagues on a project centered around Home Automation utilizing Esp32 technology.',
       rowStatus: 1,
+      buttonContent: 1,
+      buttonURL:
+        'https://www.linkedin.com/posts/priyanshu-baran_homeautomation-matlabproject-teamwork-activity-7065665431537143808-_9pB?utm_source=share&utm_medium=member_desktop',
+      additionalContent: '',
     },
-    {
-      icon: 'map-marker-alt',
-      title: 'Title of Section 6',
-      date: '6th Jan 2021',
-      content:
-        'Lorem ipsum dolor sit ameters consectetur adipisicing elit. Sed qui veroes praesentium maiores, sint eos vero sapiente voluptas debitis dicta dolore.',
-      rowStatus: 2,
-    },
+    // {
+    //   icon: 'map-marker-alt',
+    //   title: 'Title of Section 6',
+    //   date: '6th Jan 2021',
+    //   content:
+    //     'Lorem ipsum dolor sit ameters consectetur adipisicing elit. Sed qui veroes praesentium maiores, sint eos vero sapiente voluptas debitis dicta dolore.',
+    //   rowStatus: 2,
+    //   buttonContent: 1,
+    //   buttonURL: '',
+    //   additionalContent: '',
+    // },
   ];
   return (
     <div id='about'>
@@ -99,7 +138,9 @@ export const About = ({ isClicked }) => {
         <a href='#about'>
           <h1
             className='section_heading'
-            style={{ color: `${isClicked ? '#fff' : '#000'}` }}>
+            style={{
+              color: `${isClicked ? '#fff' : '#000'}`,
+            }}>
             <i className='fa-solid fa-hashtag'></i> My Journey
           </h1>
         </a>
@@ -128,6 +169,9 @@ export const About = ({ isClicked }) => {
             date={timeline.date}
             content={timeline.content}
             rowStatus={timeline.rowStatus}
+            buttonContent={timeline.buttonContent}
+            buttonURL={timeline.buttonURL}
+            additionalContent={timeline.additionalContent}
             isClicked={isClicked}
           />
         ))}

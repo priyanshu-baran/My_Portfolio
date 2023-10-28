@@ -73,7 +73,7 @@
   animation: animate 1s 1s cubic-bezier(1, 0, 0.5, 1) forwards;
 }
 
-.bar .progress-line.html span {
+.bar .progress-line.react span {
   width: 90%;
 }
 
@@ -81,19 +81,19 @@
   width: 60%;
 }
 
-.bar .progress-line.react span {
-  width: 85%;
+.bar .progress-line.nodejs span {
+  width: 80%;
 }
 
-.bar .progress-line.mongodb span {
+.bar .progress-line.mysql span {
   width: 50%;
 }
 
 .bar .progress-line.java span {
-  width: 75%;
+  width: 85%;
 }
 
-.bar .progress-line.mysql span {
+.bar .progress-line.mongodb span {
   width: 75%;
 }
 
@@ -141,7 +141,7 @@
   }
 }
 
-.progress-line.html span::after {
+.progress-line.react span::after {
   content: "90%";
 }
 
@@ -149,19 +149,19 @@
   content: "60%";
 }
 
-.progress-line.react span::after {
-  content: "85%";
+.progress-line.nodejs span::after {
+  content: "80%";
 }
 
-.progress-line.mongodb span::after {
+.progress-line.mysql span::after {
   content: "50%";
 }
 
 .progress-line.java span::after {
-  content: "75%";
+  content: "85%";
 }
 
-.progress-line.mysql span::after {
+.progress-line.mongodb span::after {
   content: "75%";
 }
 
@@ -173,6 +173,123 @@
 .skill_img {
   position: relative;
   left: 200px;
+}
+
+.skills_bubble {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  font: 2vw system-ui;
+  margin: 10px;
+}
+
+.skills_bubble p {
+  transform: translatey(0px);
+  -webkit-animation: float 5s ease-in-out infinite;
+  animation: float 5s ease-in-out infinite;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 3px;
+  font-size: 15px;
+  color: #774f38;
+  background-color: #ece5ce;
+  padding: 50px;
+  border-radius: 11px;
+  position: relative;
+  box-shadow: 20px 20px #83af9b;
+  font-family: "Baloo 2", cursive;
+}
+
+.skills_bubble p:after {
+  transform: translatey(0px);
+  -webkit-animation: float2 5s ease-in-out infinite;
+  animation: float2 5s ease-in-out infinite;
+  content: ".";
+  font-weight: bold;
+  -webkit-text-fill-color: #ece5ce;
+  text-shadow: 22px 22px #83af9b;
+  text-align: left;
+  font-size: 55px;
+  width: 55px;
+  height: 11px;
+  line-height: 30px;
+  border-radius: 11px;
+  background-color: #ece5ce;
+  position: absolute;
+  display: block;
+  bottom: -30px;
+  left: 0;
+  box-shadow: 22px 22px #83af9b;
+  z-index: -2;
+}
+
+@-webkit-keyframes float {
+  0% {
+    transform: translatey(0px);
+  }
+
+  50% {
+    transform: translatey(-20px);
+  }
+
+  100% {
+    transform: translatey(0px);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translatey(0px);
+  }
+
+  50% {
+    transform: translatey(-20px);
+  }
+
+  100% {
+    transform: translatey(0px);
+  }
+}
+
+@-webkit-keyframes float2 {
+  0% {
+    line-height: 30px;
+    transform: translatey(0px);
+  }
+
+  55% {
+    transform: translatey(-20px);
+  }
+
+  60% {
+    line-height: 10px;
+  }
+
+  100% {
+    line-height: 30px;
+    transform: translatey(0px);
+  }
+}
+
+@keyframes float2 {
+  0% {
+    line-height: 30px;
+    transform: translatey(0px);
+  }
+
+  55% {
+    transform: translatey(-20px);
+  }
+
+  60% {
+    line-height: 10px;
+  }
+
+  100% {
+    line-height: 30px;
+    transform: translatey(0px);
+  }
 }
 
 @keyframes scaleAnimation {

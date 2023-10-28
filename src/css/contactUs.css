@@ -18,6 +18,11 @@
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
+.cu_container.dark {
+  background: #000;
+  color: #fff;
+}
+
 .cu_container .cu_content {
   display: flex;
   align-items: center;
@@ -66,6 +71,11 @@
 .cu_content .left-side .cu_details .text-two {
   font-size: 14px;
   color: #afafb6;
+}
+
+.cu_content .left-side .cu_details .text-one:hover,
+.cu_content .left-side .cu_details .text-two:hover {
+  color: #58585a;
 }
 
 .cu_container .cu_content .right-side {
@@ -145,6 +155,12 @@
   background-color: #fff;
 }
 
+.right-side .cu_input-box.dark input:focus,
+.right-side .cu_input-box.dark input:valid {
+  background-color: #000;
+  color: #fff;
+}
+
 .right-side .cu_input-box label {
   position: absolute;
   left: 18px;
@@ -163,6 +179,12 @@
   display: 14px;
   color: #ba24c2;
   background: #fff;
+}
+
+.right-side .cu_input-box.dark input:focus~label,
+.right-side .cu_input-box.dark input:valid~label {
+  color: #fff;
+  background: #000;
 }
 
 .right-side .cu_input-box input[type="submit"] {
@@ -199,9 +221,16 @@
   transition: all 0.3s ease;
 }
 
-.right-side .message-box textarea:focus {
+.right-side .message-box textarea:focus,
+.right-side .message-box textarea:valid {
   border-color: #ba24c2;
   background-color: #fff;
+}
+
+.right-side .message-box.dark textarea:focus,
+.right-side .message-box.dark textarea:valid {
+  background-color: #000;
+  color: #fff;
 }
 
 .right-side .message-box label {
@@ -214,10 +243,17 @@
   transition: all 0.3s ease;
 }
 
-.right-side .message-box textarea:focus~label {
+.right-side .message-box textarea:focus~label,
+.right-side .message-box textarea:valid~label {
   left: 12px;
   top: -10px;
   color: #ba24c2;
   font-size: 14px;
   background: #fff;
+}
+
+.right-side .message-box.dark textarea:focus~label,
+.right-side .message-box.dark textarea:valid~label {
+  color: #fff;
+  background: #000;
 }

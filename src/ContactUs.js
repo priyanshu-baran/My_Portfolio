@@ -1,7 +1,11 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Globe from 'react-globe.gl';
+import emailjs from 'emailjs-com';
 
 export const ContactUs = ({ isClicked }) => {
+  const [name, setName] = useState('');
+  const [mail, setMail] = useState('');
+  const [msg, setMsg] = useState('');
   const globeEl = useRef();
   const N = 10;
   const arcData = [...Array(N).keys()].map(() => ({
@@ -14,6 +18,14 @@ export const ContactUs = ({ isClicked }) => {
       ['red', 'white', 'blue', 'green'][Math.round(Math.random() * 3)],
     ],
   }));
+  const handleSubmit = () => {
+    // emailjs.send(
+    //   'service_3p3itef',
+    //   'template_m3ad2dr',
+    //   '',
+    //   'If6sZzUtnmSZ5Df7D'
+    // );
+  };
   useEffect(() => {
     globeEl.current.controls().autoRotate = true;
     globeEl.current.controls().autoRotateSpeed = 1.2;
@@ -64,7 +76,7 @@ export const ContactUs = ({ isClicked }) => {
             arcDashAnimateTime={() => Math.random() * 4000 + 500}
           />
         </div>
-        <div className='cu_container'>
+        <div className={`cu_container ${isClicked ? '' : 'dark'}`}>
           <div className='cu_content'>
             <div className='left-side'>
               <div className='address cu_details'>
@@ -91,33 +103,41 @@ export const ContactUs = ({ isClicked }) => {
             <div className='right-side'>
               <div className='topic-text'>Send us a message</div>
               <p>
-                If you have any work from me or any types of quries related to
-                my tutorial, you can send me message from here. It's my pleasure
-                to help you.
+                If you have any work from me or any types of queries related to
+                my web-folio, you can send me message from here. It's my
+                pleasure to help you.
               </p>
               <form action='#'>
-                <div className='cu_input-box'>
+                <div className={`cu_input-box ${isClicked ? '' : 'dark'}`}>
                   <input
                     type='text'
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     required
                   />
                   <label>Enter your name</label>
                 </div>
-                <div className='cu_input-box'>
+                <div className={`cu_input-box ${isClicked ? '' : 'dark'}`}>
                   <input
                     type='text'
+                    value={mail}
+                    onChange={(e) => setMail(e.target.value)}
                     required
                   />
                   <label>Enter your email</label>
                 </div>
-                <div className='message-box'>
-                  <textarea required></textarea>
+                <div className={`message-box ${isClicked ? '' : 'dark'}`}>
+                  <textarea
+                    value={msg}
+                    onChange={(e) => setMsg(e.target.value)}
+                    required></textarea>
                   <label>Enter your message</label>
                 </div>
                 <div className='cu_input-box'>
                   <input
                     type='submit'
                     value='Send Message'
+                    onClick={handleSubmit}
                   />
                 </div>
               </form>

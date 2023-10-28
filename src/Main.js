@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 
@@ -134,44 +133,44 @@ export const Main = ({ isClicked, setIsClicked }) => {
                 <label htmlFor='tab-1'>
                   <img
                     alt=''
-                    src='img/img-1.jpg'
+                    src='img/img_1.jpg'
                   />
                 </label>
                 <label htmlFor='tab-2'>
                   <img
                     alt=''
-                    src='img/img-2.jpg'
+                    src='img/img_2.jpg'
                   />
                 </label>
                 <label htmlFor='tab-3'>
                   <img
                     alt=''
-                    src='img/img-3.jpg'
+                    src='img/img_3.jpg'
                   />
                 </label>
                 <label htmlFor='tab-4'>
                   <img
                     alt=''
-                    src='img/img-4.jpg'
+                    src='img/img_4.jpeg'
                   />
                 </label>
               </div>
               <div className='img-card'>
                 <img
                   alt=''
-                  src='img/img-1.jpg'
+                  src='img/img_1.jpg'
                 />
                 <img
                   alt=''
-                  src='img/img-2.jpg'
+                  src='img/img_2.jpg'
                 />
                 <img
                   alt=''
-                  src='img/img-3.jpg'
+                  src='img/img_3.jpg'
                 />
                 <img
                   alt=''
-                  src='img/img-4.jpg'
+                  src='img/img_4.jpeg'
                 />
               </div>
             </div>
@@ -210,19 +209,34 @@ export const Main = ({ isClicked, setIsClicked }) => {
                       <div className='content'>
                         <p>Share this link via</p>
                         <ul className='icons'>
-                          <a href='#'>
+                          <a
+                            href='https://www.linkedin.com/shareArticle?url=example.com/share-link'
+                            target='_blank'
+                            rel='noreferrer'>
                             <i className='fab fa-linkedin'></i>
                           </a>
-                          <a href='#'>
+                          <a
+                            href='https://twitter.com/intent/tweet?url=example.com/share-link&text=Hey,%20checkout%20this%20web-folio...!!!%0a&via=Priyanshu_Baran'
+                            target='_blank'
+                            rel='noreferrer'>
                             <i className='fab fa-twitter'></i>
                           </a>
-                          <a href='#'>
-                            <i className='fab fa-instagram'></i>
+                          <a
+                            href='https://www.facebook.com/sharer/sharer.php?u=example.com/share-link'
+                            target='_blank'
+                            rel='noreferrer'>
+                            <i className='fab fa-facebook'></i>
                           </a>
-                          <a href='#'>
+                          <a
+                            href='https://api.whatsapp.com/send?text=Hey,%20checkout%20this%20web-folio...!!!%0aexample.com/share-link'
+                            target='_blank'
+                            rel='noreferrer'>
                             <i className='fab fa-whatsapp'></i>
                           </a>
-                          <a href='#'>
+                          <a
+                            href='https://telegram.me/share/url?url=example.com/share-link&text=Hey,%20checkout%20this%20web-folio...!!!'
+                            target='_blank'
+                            rel='noreferrer'>
                             <i className='fab fa-telegram-plane'></i>
                           </a>
                         </ul>

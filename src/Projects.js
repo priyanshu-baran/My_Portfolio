@@ -139,8 +139,7 @@ export const ProjectData = ({
 export const Projects = ({ isClicked }) => {
   const project_details = [
     {
-      photoUrl:
-        'https://storage.googleapis.com/chydlx/codepen/blog-cards/image-1.jpg',
+      photoUrl: 'img/project_1.jpeg',
       heading: 'Boilerplate for websites',
       shortDesc: 'Mar 2023 - Apr 2023',
       content:
@@ -152,8 +151,7 @@ export const Projects = ({ isClicked }) => {
       demoLink: 'https://boilerplate-for-websites.netlify.app/',
     },
     {
-      photoUrl:
-        'https://storage.googleapis.com/chydlx/codepen/blog-cards/image-2.jpg',
+      photoUrl: 'img/project_2.jpeg',
       heading: 'Voice Assistant Using Java',
       shortDesc: 'Dec 2022 - Apr 2023',
       content:
@@ -165,8 +163,7 @@ export const Projects = ({ isClicked }) => {
       videoLink: 'https://clipchamp.com/watch/zpvuGlC85DW',
     },
     {
-      photoUrl:
-        'https://storage.googleapis.com/chydlx/codepen/blog-cards/image-1.jpg',
+      photoUrl: 'img/project_3.jpeg',
       heading: 'Chat Application',
       shortDesc: 'Jun 2023 - July 2023',
       content:
@@ -179,20 +176,18 @@ export const Projects = ({ isClicked }) => {
       videoLink: 'https://clipchamp.com/watch/B3gtuU7A1nO',
     },
     {
-      photoUrl:
-        'https://storage.googleapis.com/chydlx/codepen/blog-cards/image-2.jpg',
+      photoUrl: 'img/project_4.jpeg',
       heading: 'E-Learning Website UI Design',
       shortDesc: 'May 2023 - Present',
       content:
-        'This website is all about any other E-Learning websites where any user used to login and select the course of his//her own preference from the given lists of courses. The user can also attempt a free quiz and then buy it according to the requirement.',
+        'This website is all about any other E-Learning websites where any user used to login and select the course of his/her own preference from the given lists of courses. The user can also attempt a free quiz and then buy it according to the requirement.',
       altStatus: 1,
       // readMore: '',
       // codeLink: '',
       // demoLink: '',
     },
     {
-      photoUrl:
-        'https://storage.googleapis.com/chydlx/codepen/blog-cards/image-1.jpg',
+      photoUrl: 'img/project_5.jpeg',
       heading: 'Digital Adda Website',
       shortDesc: 'May 2023 - Present',
       content:
@@ -210,7 +205,7 @@ export const Projects = ({ isClicked }) => {
     } else {
       setProjectsToShow(3);
     }
-    window.location.href = '/main#showhide_btn';
+    // window.location.href = '/main#showhide_btn';
   };
   return (
     <div id='projects'>
@@ -218,7 +213,10 @@ export const Projects = ({ isClicked }) => {
         <a href='#projects'>
           <h1
             className='section_heading'
-            style={{ color: `${isClicked ? '#000' : '#fff'}` }}>
+            style={{
+              color: `${isClicked ? '#000' : '#fff'}`,
+              paddingTop: '100px',
+            }}>
             <i className='fa-solid fa-hashtag'></i> My Work
           </h1>
         </a>
@@ -241,7 +239,7 @@ export const Projects = ({ isClicked }) => {
         ))}
         {project_details.length > 3 && (
           <div
-            id='showhide_btn'
+            // id='showhide_btn'
             className='sh_container'
             onClick={toggleProjectsToShow}>
             <div className='sh_bg'></div>
