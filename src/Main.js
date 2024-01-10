@@ -209,31 +209,31 @@ export const Main = ({ isClicked, setIsClicked }) => {
                         <p>Share this link via</p>
                         <ul className='icons'>
                           <a
-                            href='https://www.linkedin.com/shareArticle?url=example.com/share-link'
+                            href='https://www.linkedin.com/shareArticle?url=https://my-webfolio.netlify.app/'
                             target='_blank'
                             rel='noreferrer'>
                             <i className='fab fa-linkedin'></i>
                           </a>
                           <a
-                            href='https://twitter.com/intent/tweet?url=example.com/share-link&text=Hey,%20checkout%20this%20web-folio...!!!%0a&via=Priyanshu_Baran'
+                            href='https://twitter.com/intent/tweet?url=https://my-webfolio.netlify.app/&text=Hey,%20checkout%20this%20web-folio...!!!%0a&via=Priyanshu_Baran'
                             target='_blank'
                             rel='noreferrer'>
                             <i className='fab fa-twitter'></i>
                           </a>
                           <a
-                            href='https://www.facebook.com/sharer/sharer.php?u=example.com/share-link'
+                            href='https://www.facebook.com/sharer/sharer.php?u=https://my-webfolio.netlify.app/'
                             target='_blank'
                             rel='noreferrer'>
                             <i className='fab fa-facebook'></i>
                           </a>
                           <a
-                            href='https://api.whatsapp.com/send?text=Hey,%20checkout%20this%20web-folio...!!!%0aexample.com/share-link'
+                            href='https://api.whatsapp.com/send?text=Hey,%20checkout%20this%20web-folio...!!!%0ahttps://my-webfolio.netlify.app/'
                             target='_blank'
                             rel='noreferrer'>
                             <i className='fab fa-whatsapp'></i>
                           </a>
                           <a
-                            href='https://telegram.me/share/url?url=example.com/share-link&text=Hey,%20checkout%20this%20web-folio...!!!'
+                            href='https://telegram.me/share/url?url=https://my-webfolio.netlify.app/&text=Hey,%20checkout%20this%20web-folio...!!!'
                             target='_blank'
                             rel='noreferrer'>
                             <i className='fab fa-telegram-plane'></i>
@@ -245,7 +245,7 @@ export const Main = ({ isClicked, setIsClicked }) => {
                           <input
                             type='text'
                             id='shareLinkInput'
-                            defaultValue='example.com/share-link'
+                            defaultValue='https://my-webfolio.netlify.app'
                             readOnly
                           />
                           <button onClick={handleCopyLink}>Copy</button>

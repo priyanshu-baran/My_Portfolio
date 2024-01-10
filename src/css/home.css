@@ -124,7 +124,7 @@ main {
   font-size: 3.5rem;
   line-height: 0.88;
   color: transparent;
-  background-image: linear-gradient(#F44336, #00BCD4, #FF5722);
+  background-image: linear-gradient(#FFEB3B, #F44336);
   -webkit-background-clip: text;
   background-clip: text;
 }
