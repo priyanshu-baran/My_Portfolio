@@ -114,7 +114,7 @@ main {
   font-size: 5.25rem;
   line-height: 0.88;
   color: transparent;
-  background-image: linear-gradient(#F44336, #00BCD4, #FF5722);
+  background-image: linear-gradient(#F44336, #FFEB3B);
   -webkit-background-clip: text;
   background-clip: text;
 }
@@ -124,7 +124,7 @@ main {
   font-size: 3.5rem;
   line-height: 0.88;
   color: transparent;
-  background-image: linear-gradient(#F44336, #FFEB3B);
+  background-image: linear-gradient(#F44336, #00BCD4, #FF5722);
   -webkit-background-clip: text;
   background-clip: text;
 }
@@ -228,148 +228,6 @@ main {
   pointer-events: none;
 }
 
-@media (max-width:1500px) {
-  .text h2 {
-    font-size: 5.5rem;
-  }
-
-  .text h1 {
-    font-size: 4.75rem;
-  }
-
-  .text h3 {
-    font-size: 3rem;
-  }
-}
-
-@media (max-width:1100px) {
-  .text h2 {
-    font-size: 4.75rem;
-  }
-
-  .text h1 {
-    font-size: 4rem;
-  }
-
-  .text h3 {
-    font-size: 2.25rem;
-  }
-
-  .bg-img {
-    width: initial;
-    height: 233.328%;
-  }
-
-  .fog-7 {
-    width: initial;
-    height: 158.3328%;
-  }
-
-  .mountain-10 {
-    width: initial;
-    height: 74.3328%;
-  }
-
-  .fog-6 {
-    width: initial;
-    height: 134.16%;
-  }
-
-  .mountain-9 {
-    width: initial;
-    height: 41.664;
-  }
-
-  .mountain-8 {
-    width: initial;
-    height: 67.5%;
-  }
-
-  .fog-5 {
-    width: initial;
-    height: 37.5%;
-  }
-
-  .mountain-7 {
-    width: initial;
-    height: 44.832%;
-  }
-
-  .mountain-6 {
-    width: initial;
-    height: 34%;
-  }
-
-  .fog-4 {
-    width: initial;
-    height: 49.168%;
-  }
-
-  .mountain-5 {
-    width: initial;
-    height: 52.08%;
-  }
-
-  .fog-3 {
-    width: initial;
-    height: 133.328%;
-  }
-
-  .mountain-4 {
-    width: initial;
-    height: 66.672%;
-  }
-
-  .mountain-3 {
-    width: initial;
-    height: 43.328%;
-  }
-
-  .fog-2 {
-    width: initial;
-    height: 133.328%;
-  }
-
-  .mountain-2 {
-    width: initial;
-    height: 57.5%;
-  }
-
-  .mountain-1 {
-    width: initial;
-    height: 54.16%;
-  }
-
-  .sun-rays {
-    width: initial;
-    height: 49.6%;
-  }
-
-  .fog-1 {
-    width: initial;
-    height: 208.336%;
-  }
-}
-
-@media (max-width:500px) {
-  .text h2 {
-    font-size: 4rem;
-  }
-
-  .text h1 {
-    font-size: 3.25rem;
-  }
-
-  .text h3 {
-    font-size: 1.5rem;
-  }
-
-  .logo {
-    width: 125px;
-    left: 0;
-  }
-}
-
 .cssbuttons-io-button {
   background: #A370F0;
   color: white;
@@ -387,7 +245,7 @@ main {
   overflow: hidden;
   position: relative;
   top: 50px;
-  left: 900px;
+  left: 47%;
   height: 2.8em;
   padding-right: 3.3em;
 }
@@ -423,4 +281,22 @@ main {
 
 .cssbuttons-io-button:active .btn_icon {
   transform: scale(0.95);
+}
+
+@media (max-width:1800px) {
+  .text h2 {
+    font-size: 5.5rem;
+  }
+
+  .text h1 {
+    font-size: 4.75rem;
+  }
+
+  .text h3 {
+    font-size: 3rem;
+  }
+
+  .cssbuttons-io-button {
+    top: 20px;
+  }
 }

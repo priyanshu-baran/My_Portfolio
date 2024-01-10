@@ -1,5 +1,5 @@
 import { useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 const Timeline = ({
   icon,
@@ -132,14 +132,30 @@ export const About = ({ isClicked }) => {
     //   additionalContent: '',
     // },
   ];
+  const inView = useRef(null);
+  const isInView = useInView(inView, { once: true });
+  useEffect(() => {
+    const heading = document.getElementById('heading1');
+    heading.addEventListener('animationend', (e) => {
+      if (e.animationName === 'cursor') {
+        heading.style.borderRight = 'none';
+      }
+    });
+  }, []);
   return (
     <div id='about'>
       <center>
         <a href='#about'>
           <h1
+            ref={inView}
             className='section_heading'
+            id='heading1'
             style={{
               color: `${isClicked ? '#fff' : '#000'}`,
+              animation: isInView
+                ? 'cursor 1s 4 step-end, typingabout 2s steps(12)'
+                : '',
+              marginTop: '150px',
             }}>
             <i className='fa-solid fa-hashtag'></i> My Journey
           </h1>

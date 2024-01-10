@@ -91,8 +91,7 @@ export const Main = ({ isClicked, setIsClicked }) => {
                 alt='logo'
                 className='logo'
                 style={{
-                  height: '200px',
-                  width: '250px',
+                  width: '12%',
                   marginLeft: '-120px',
                 }}
               />

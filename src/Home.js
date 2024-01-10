@@ -230,7 +230,7 @@ export const Home = () => {
               className='text parallax'>
               <h2>Hi There...!!!</h2>
               <h1>I am Priyanshu Baran</h1>
-              <h3>A FullStack Developer</h3>
+              <h3>FullStack Developer</h3>
               <button
                 onClick={() => usenavigate('/main')}
                 className='cssbuttons-io-button hiding'>

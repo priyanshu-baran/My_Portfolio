@@ -65,6 +65,51 @@ html {
   width: fit-content;
   font-size: 50px;
   text-decoration: underline;
+  border-right: 4px solid;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@keyframes cursor {
+
+  0%,
+  100% {
+    border-color: transparent;
+  }
+
+  50% {
+    border-color: currentColor;
+  }
+}
+
+@keyframes typingabout {
+  0% {
+    width: 0ch
+  }
+
+  100% {
+    width: 12ch;
+  }
+}
+
+@keyframes typingskills {
+  0% {
+    width: 0ch
+  }
+
+  100% {
+    width: 16ch;
+  }
+}
+
+@keyframes typingprojects {
+  0% {
+    width: 0ch
+  }
+
+  100% {
+    width: 9ch;
+  }
 }
 
 .section_heading i {

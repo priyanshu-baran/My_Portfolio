@@ -590,3 +590,18 @@ header .close:hover {
     opacity: 0.5;
   }
 }
+
+@media (max-width:1800px) {
+  .scrolldown {
+    left: 55%;
+  }
+
+  .share_btn {
+    margin-top: -8px;
+  }
+
+  .front_text {
+    left: 90px;
+    font-size: 35px;
+  }
+}

@@ -78,7 +78,7 @@
 }
 
 .bar .progress-line.css span {
-  width: 60%;
+  width: 70%;
 }
 
 .bar .progress-line.nodejs span {
@@ -86,7 +86,7 @@
 }
 
 .bar .progress-line.mysql span {
-  width: 50%;
+  width: 60%;
 }
 
 .bar .progress-line.java span {
@@ -146,7 +146,7 @@
 }
 
 .progress-line.css span::after {
-  content: "60%";
+  content: "70%";
 }
 
 .progress-line.nodejs span::after {
@@ -154,7 +154,7 @@
 }
 
 .progress-line.mysql span::after {
-  content: "50%";
+  content: "60%";
 }
 
 .progress-line.java span::after {
@@ -303,5 +303,75 @@
 
   100% {
     transform: scale(1);
+  }
+}
+
+#linode {
+  opacity: 0.6;
+}
+
+#aws {
+  top: 50px;
+  left: 850px;
+}
+
+#firebase {
+  top: -350px;
+  left: 700px;
+}
+
+#aws-ec2 {
+  top: 25px;
+  left: 500px;
+  opacity: 0.8;
+}
+
+#aws-amplify {
+  top: -75px;
+  left: 1350px;
+  opacity: 0.6;
+}
+
+#mern-stack {
+  top: -220px;
+  left: 50px;
+}
+
+@media (max-width:1800px) {
+  .skill_img {
+    left: 40px;
+  }
+
+  .skill_body {
+    padding-left: 80px;
+  }
+
+  #linode {
+    top: -25%;
+  }
+
+  #aws {
+    top: 35%;
+    left: 250%;
+  }
+
+  #firebase {
+    top: -250%;
+    left: 320%;
+  }
+
+  #aws-ec2 {
+    top: 18%;
+    left: 200%;
+  }
+
+  #aws-amplify {
+    top: -58%;
+    left: 500%;
+  }
+
+  #mern-stack {
+    top: -150%;
+    left: 18%;
   }
 }

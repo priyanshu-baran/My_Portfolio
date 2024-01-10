@@ -323,33 +323,9 @@
   position: absolute;
 }
 
-@media (max-width: 1850px) {
-  .box {
-    width: 120px;
-  }
-
-  .box .front-face {
-    height: 100px;
-    padding: 10px;
-  }
-
-  .box .front-face .icon i {
-    font-size: 35px;
-  }
-}
-
-@media (max-width: 1500px) {
+@media (max-width: 1800px) {
   .project_content {
-    grid-template-columns: 1fr;
-  }
-
-  .box {
-    display: none;
-  }
-
-  .social_icons,
-  .social_icons2 {
-    display: block;
+    grid-template-columns: 1fr repeat(2, calc((100% - 40%) / 3));
   }
 }
 

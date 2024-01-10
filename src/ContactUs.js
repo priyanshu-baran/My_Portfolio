@@ -1,14 +1,16 @@
+import { useInView } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import Globe from 'react-globe.gl';
-import emailjs from 'emailjs-com';
+import { toast } from 'react-hot-toast';
 
 export const ContactUs = ({ isClicked }) => {
+  const inView = useRef(null);
+  const isInView = useInView(inView, { once: true });
   const [name, setName] = useState('');
   const [mail, setMail] = useState('');
   const [msg, setMsg] = useState('');
   const globeEl = useRef();
-  const N = 10;
-  const arcData = [...Array(N).keys()].map(() => ({
+  const arcData = [...Array(10).keys()].map(() => ({
     startLat: (Math.random() - 0.5) * 180,
     startLng: (Math.random() - 0.5) * 360,
     endLat: (Math.random() - 0.5) * 180,
@@ -18,27 +20,43 @@ export const ContactUs = ({ isClicked }) => {
       ['red', 'white', 'blue', 'green'][Math.round(Math.random() * 3)],
     ],
   }));
-  const handleSubmit = () => {
-    // emailjs.send(
-    //   'service_3p3itef',
-    //   'template_m3ad2dr',
-    //   '',
-    //   'If6sZzUtnmSZ5Df7D'
-    // );
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    toast('Currently not working', {
+      icon: '😞',
+      style: isClicked && {
+        background: '#333',
+        color: '#fff',
+      },
+    });
   };
   useEffect(() => {
     globeEl.current.controls().autoRotate = true;
     globeEl.current.controls().autoRotateSpeed = 1.2;
-    globeEl.current.controls().minZoom = 20;
     globeEl.current.controls().enableZoom = false;
+  }, []);
+  useEffect(() => {
+    const heading = document.getElementById('heading4');
+    heading.addEventListener('animationend', (e) => {
+      if (e.animationName === 'cursor') {
+        heading.style.borderRight = 'none';
+      }
+    });
   }, []);
   return (
     <div id='contact'>
       <center>
         <a href='#contact'>
           <h1
+            ref={inView}
             className='section_heading'
-            style={{ color: `${isClicked ? '#000' : '#fff'}` }}>
+            id='heading4'
+            style={{
+              color: `${isClicked ? '#000' : '#fff'}`,
+              animation: isInView
+                ? 'cursor 1s 3 step-end, typingprojects 1.5s steps(9)'
+                : '',
+            }}>
             <i className='fa-solid fa-hashtag'></i> Contact
           </h1>
         </a>
@@ -58,7 +76,7 @@ export const ContactUs = ({ isClicked }) => {
           }}>
           <Globe
             ref={globeEl}
-            width={700}
+            width={650}
             height={600}
             globeImageUrl={`//unpkg.com/three-globe/example/img/earth-${
               isClicked ? 'day' : 'blue-marble'
@@ -107,7 +125,7 @@ export const ContactUs = ({ isClicked }) => {
                 my web-folio, you can send me message from here. It's my
                 pleasure to help you.
               </p>
-              <form action='#'>
+              <form onSubmit={handleSubmit}>
                 <div className={`cu_input-box ${isClicked ? '' : 'dark'}`}>
                   <input
                     type='text'
@@ -137,7 +155,6 @@ export const ContactUs = ({ isClicked }) => {
                   <input
                     type='submit'
                     value='Send Message'
-                    onClick={handleSubmit}
                   />
                 </div>
               </form>

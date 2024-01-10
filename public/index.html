@@ -10,10 +10,32 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
+  <style>
+    #mobileMessage {
+      display: none;
+    }
+
+    @media only screen and (max-width: 1500px) {
+      #mobileMessage {
+        display: block;
+        text-align: center;
+        padding: 20px;
+        background-color: #f44336;
+        color: #fff;
+      }
+
+      #root {
+        display: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="mobileMessage">Kindly open this website on a desktop or laptop for a better user experience, since it is
+    currently not responsive for mobile devices. <br /><br /><br /> Also don't try to access this page on mobile by
+    enabling desktop site option on the browser.</div>
   <div id="root"></div>
 </body>
 

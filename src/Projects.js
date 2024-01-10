@@ -1,5 +1,5 @@
 import { useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export const ProjectData = ({
   photoUrl,
@@ -49,7 +49,6 @@ export const ProjectData = ({
                 Priyanshu
               </a>
             </li>
-            <li className='date'>June 24, 2023</li>
             <li className='tags'>
               <ul>
                 <li>Learn</li>
@@ -143,7 +142,7 @@ export const Projects = ({ isClicked }) => {
       heading: 'Boilerplate for websites',
       shortDesc: 'Mar 2023 - Apr 2023',
       content:
-        'I have made a starter template kind of thing for other websites to use directly mine, if they want to include the same features which I added in mine few of them which are, Login and Signup page, Home page, About page, Profile page, Error page etc.',
+        'I have made a starter template kind of thing for other websites to use directly mine, if they want to include the same features which I added in mine. Few of them which are, Login and Signup page, Home page, About page, Profile page, Error page etc.',
       altStatus: 0,
       readMore:
         'https://github.com/priyanshu-baran/Boilerplate_For_Websites/blob/master/README.md',
@@ -160,7 +159,8 @@ export const Projects = ({ isClicked }) => {
       readMore:
         'https://github.com/priyanshu-baran/Voice_Assistant_Using_Java/blob/master/README.md',
       codeLink: 'https://github.com/priyanshu-baran/Voice_Assistant_Using_Java',
-      videoLink: 'https://clipchamp.com/watch/zpvuGlC85DW',
+      videoLink:
+        'https://www.linkedin.com/posts/priyanshu-baran_jarvis-voiceassistant-java-activity-7051560861542326272-DZoq?utm_source=share&utm_medium=member_desktop',
     },
     {
       photoUrl: 'img/project_3.jpeg',
@@ -173,49 +173,66 @@ export const Projects = ({ isClicked }) => {
         'https://github.com/priyanshu-baran/Chat_Application/blob/main/README.md',
       codeLink: 'https://github.com/priyanshu-baran/Chat_Application',
       demoLink: 'https://web-based-real-time-chat-app.netlify.app/',
-      videoLink: 'https://clipchamp.com/watch/B3gtuU7A1nO',
+      videoLink:
+        'https://www.linkedin.com/posts/priyanshu-baran_chatapplication-realtimechat-socketio-activity-7078430944554065920-BhLM?utm_source=share&utm_medium=member_desktop',
     },
     {
       photoUrl: 'img/project_4.jpeg',
       heading: 'E-Learning Website UI Design',
-      shortDesc: 'May 2023 - Present',
+      shortDesc: 'Oct 2023 - Jan 2024',
       content:
         'This website is all about any other E-Learning websites where any user used to login and select the course of his/her own preference from the given lists of courses. The user can also attempt a free quiz and then buy it according to the requirement.',
       altStatus: 1,
-      // readMore: '',
-      // codeLink: '',
-      // demoLink: '',
+      readMore:
+        'https://github.com/priyanshu-baran/E-Learning_Website/blob/main/README.md',
+      codeLink: 'https://github.com/priyanshu-baran/E-Learning_Website',
+      demoLink: 'https://main.d1fwnnaavf7968.amplifyapp.com/',
+      videoLink:
+        'https://www.linkedin.com/posts/priyanshu-baran_connectlearn-elearning-aws-activity-7150127207347105793-t1q2?utm_source=share&utm_medium=member_desktop',
     },
     {
       photoUrl: 'img/project_5.jpeg',
       heading: 'Digital Adda Website',
-      shortDesc: 'May 2023 - Present',
+      shortDesc: 'Jan 2024 - Present',
       content:
         'This website is a combination of almost all the commonly used modern digital tools that are available in any websites, such as calculator, weather app, notes, to-do list, file uploading and downloading, etc. along with user login and signup page.',
       altStatus: 0,
-      // readMore: '',
-      // codeLink: '',
-      // demoLink: '',
     },
   ];
   const [projectsToShow, setProjectsToShow] = useState(3);
+  const inView = useRef(null);
+  const isInView = useInView(inView, { once: true });
   const toggleProjectsToShow = () => {
     if (projectsToShow === 3) {
       setProjectsToShow(project_details.length);
     } else {
       setProjectsToShow(3);
     }
-    // window.location.href = '/main#showhide_btn';
   };
+  useEffect(() => {
+    const heading = document.getElementById('heading3');
+    heading.addEventListener('animationend', (e) => {
+      if (e.animationName === 'cursor') {
+        heading.style.borderRight = 'none';
+      }
+    });
+  }, []);
   return (
     <div id='projects'>
       <center>
         <a href='#projects'>
           <h1
+            ref={inView}
             className='section_heading'
+            id='heading3'
             style={{
               color: `${isClicked ? '#000' : '#fff'}`,
-              paddingTop: '100px',
+              marginTop: '200px',
+              animation: isInView
+                ? 'cursor 1s 3 step-end, typingprojects 1s steps(9)'
+                : '',
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
             }}>
             <i className='fa-solid fa-hashtag'></i> My Work
           </h1>
@@ -239,7 +256,6 @@ export const Projects = ({ isClicked }) => {
         ))}
         {project_details.length > 3 && (
           <div
-            // id='showhide_btn'
             className='sh_container'
             onClick={toggleProjectsToShow}>
             <div className='sh_bg'></div>
