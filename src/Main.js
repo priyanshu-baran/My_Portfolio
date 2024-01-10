@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
 
 import { Skills } from './Skills';
 import { Preloader } from './Preloader';
@@ -79,10 +78,6 @@ export const Main = ({ isClicked, setIsClicked }) => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-  const usenavigate = useNavigate('');
-  useEffect(() => {
-    usenavigate.push(window.location.pathname);
-  }, [usenavigate]);
   return (
     <div>
       {isLoading ? (
