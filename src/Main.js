@@ -245,7 +245,7 @@ export const Main = ({ isClicked, setIsClicked }) => {
                           <input
                             type='text'
                             id='shareLinkInput'
-                            defaultValue='https://my-webfolio.netlify.app'
+                            defaultValue='my-webfolio.netlify.app'
                             readOnly
                           />
                           <button onClick={handleCopyLink}>Copy</button>
