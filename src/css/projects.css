@@ -60,6 +60,7 @@
   padding: 10px;
   width: 100%;
   font-size: 0.9rem;
+  user-select: none;
 }
 
 .blog-card .details a {
@@ -106,6 +107,7 @@
 .blog-card .description h1,
 .blog-card .description h2 {
   font-family: Poppins, sans-serif;
+  user-select: none;
 }
 
 .blog-card .description h1 {
@@ -124,6 +126,7 @@
 
 .blog-card .description .read-more {
   text-align: right;
+  user-select: none;
 }
 
 .blog-card .description .read-more a {
@@ -141,6 +144,7 @@
   transition: margin 0.3s, opacity 0.3s;
 }
 
+.blog-card .description .read-more .social_icons2:hover:after,
 .blog-card .description .read-more a:hover:after {
   margin-left: 5px;
   opacity: 1;
@@ -220,6 +224,7 @@
   margin: 0 auto;
   position: relative;
   perspective: 1000px;
+  user-select: none;
 }
 
 .box .front-face {
@@ -301,22 +306,12 @@
   grid-template-columns: 1fr repeat(3, calc((100% - 60%) / 3));
 }
 
-.social_icons,
 .social_icons2 {
-  display: none;
-  position: absolute;
-  right: 200px;
-  top: -5px;
-  font-size: 35px;
-}
-
-.social_icons2 {
-  right: 150px;
-}
-
-.social_icons:hover,
-.social_icons2:hover {
-  color: #5ad67d;
+  position: relative;
+  right: 2px;
+  top: 3px;
+  font-size: 18px;
+  color: #394eb8;
 }
 
 .showHide_btn {

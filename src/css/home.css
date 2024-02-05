@@ -1,6 +1,6 @@
-/* ::selection {
-  background-color: #0b372dbb;
-} */
+.home_body {
+  user-select: none;
+}
 
 .logo {
   position: absolute;
@@ -97,6 +97,7 @@ main {
   color: white;
   text-transform: uppercase;
   pointer-events: auto;
+  user-select: none;
 }
 
 .text h2 {

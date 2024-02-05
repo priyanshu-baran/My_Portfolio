@@ -181,6 +181,7 @@
   place-items: center;
   font: 2vw system-ui;
   margin: 10px;
+  user-select: none;
 }
 
 .skills_bubble p {

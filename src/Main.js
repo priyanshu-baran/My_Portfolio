@@ -94,6 +94,7 @@ export const Main = ({ isClicked, setIsClicked }) => {
                   width: '12%',
                   marginLeft: '-120px',
                 }}
+                onClick={() => window.location.reload()}
               />
             </header>
             <div
@@ -138,13 +139,13 @@ export const Main = ({ isClicked, setIsClicked }) => {
                 <label htmlFor='tab-2'>
                   <img
                     alt=''
-                    src='img/img_2.jpg'
+                    src='img/img_2.jpeg'
                   />
                 </label>
                 <label htmlFor='tab-3'>
                   <img
                     alt=''
-                    src='img/img_3.jpg'
+                    src='img/img_3.jpeg'
                   />
                 </label>
                 <label htmlFor='tab-4'>
@@ -161,11 +162,11 @@ export const Main = ({ isClicked, setIsClicked }) => {
                 />
                 <img
                   alt=''
-                  src='img/img_2.jpg'
+                  src='img/img_2.jpeg'
                 />
                 <img
                   alt=''
-                  src='img/img_3.jpg'
+                  src='img/img_3.jpeg'
                 />
                 <img
                   alt=''

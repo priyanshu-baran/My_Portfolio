@@ -69,7 +69,6 @@ export const ProjectData = ({
           <h2>{shortDesc}</h2>
           <p>{content}</p>
           <p className='read-more'>
-            <i className='fa-brands fa-github social_icons'></i>
             <i className='fa-solid fa-link social_icons2'></i>
             <a
               href={`${readMore}`}
@@ -138,43 +137,12 @@ export const ProjectData = ({
 export const Projects = ({ isClicked }) => {
   const project_details = [
     {
-      photoUrl: 'img/project_1.jpeg',
-      heading: 'Boilerplate for websites',
-      shortDesc: 'Mar 2023 - Apr 2023',
+      photoUrl: 'img/project_5.jpeg',
+      heading: 'Digital Adda Website',
+      shortDesc: 'Jan 2024 - Present',
       content:
-        'I have made a starter template kind of thing for other websites to use directly mine, if they want to include the same features which I added in mine. Few of them which are, Login and Signup page, Home page, About page, Profile page, Error page etc.',
+        'This website is a combination of almost all the commonly used modern digital tools that are available in any websites, such as calculator, weather app, notes, to-do list, file uploading and downloading, etc. along with user login and signup page.',
       altStatus: 0,
-      readMore:
-        'https://github.com/priyanshu-baran/Boilerplate_For_Websites/blob/master/README.md',
-      codeLink: 'https://github.com/priyanshu-baran/Boilerplate_For_Websites',
-      demoLink: 'https://boilerplate-for-websites.netlify.app/',
-    },
-    {
-      photoUrl: 'img/project_2.jpeg',
-      heading: 'Voice Assistant Using Java',
-      shortDesc: 'Dec 2022 - Apr 2023',
-      content:
-        "In this project, I have made a Voice Assistant named Jarvis which till now can perform basic tasks like opening or closing any application, sending messages, playing songs and showing weather forecast. I'm looking forward to add more feature in this.",
-      altStatus: 1,
-      readMore:
-        'https://github.com/priyanshu-baran/Voice_Assistant_Using_Java/blob/master/README.md',
-      codeLink: 'https://github.com/priyanshu-baran/Voice_Assistant_Using_Java',
-      videoLink:
-        'https://www.linkedin.com/posts/priyanshu-baran_jarvis-voiceassistant-java-activity-7051560861542326272-DZoq?utm_source=share&utm_medium=member_desktop',
-    },
-    {
-      photoUrl: 'img/project_3.jpeg',
-      heading: 'Chat Application',
-      shortDesc: 'Jun 2023 - July 2023',
-      content:
-        'This website is made to know and get hands-on on the web socket concept and its real-time data transfer ability. In this I have used a tailwind pre-made template to make the things easier since I want to focus mostly on the backend part.',
-      altStatus: 0,
-      readMore:
-        'https://github.com/priyanshu-baran/Chat_Application/blob/main/README.md',
-      codeLink: 'https://github.com/priyanshu-baran/Chat_Application',
-      demoLink: 'https://web-based-real-time-chat-app.netlify.app/',
-      videoLink:
-        'https://www.linkedin.com/posts/priyanshu-baran_chatapplication-realtimechat-socketio-activity-7078430944554065920-BhLM?utm_source=share&utm_medium=member_desktop',
     },
     {
       photoUrl: 'img/project_4.jpeg',
@@ -191,12 +159,43 @@ export const Projects = ({ isClicked }) => {
         'https://www.linkedin.com/posts/priyanshu-baran_connectlearn-elearning-aws-activity-7150127207347105793-t1q2?utm_source=share&utm_medium=member_desktop',
     },
     {
-      photoUrl: 'img/project_5.jpeg',
-      heading: 'Digital Adda Website',
-      shortDesc: 'Jan 2024 - Present',
+      photoUrl: 'img/project_3.jpeg',
+      heading: 'Chat Application',
+      shortDesc: 'Jun 2023 - July 2023',
       content:
-        'This website is a combination of almost all the commonly used modern digital tools that are available in any websites, such as calculator, weather app, notes, to-do list, file uploading and downloading, etc. along with user login and signup page.',
+        'This website is made to know and get hands-on on the web socket concept and its real-time data transfer ability. In this I have used a tailwind pre-made template to make the things easier since I want to focus mostly on the backend part.',
       altStatus: 0,
+      readMore:
+        'https://github.com/priyanshu-baran/Chat_Application/blob/main/README.md',
+      codeLink: 'https://github.com/priyanshu-baran/Chat_Application',
+      demoLink: 'https://web-based-real-time-chat-app.netlify.app/',
+      videoLink:
+        'https://www.linkedin.com/posts/priyanshu-baran_chatapplication-realtimechat-socketio-activity-7078430944554065920-BhLM?utm_source=share&utm_medium=member_desktop',
+    },
+    {
+      photoUrl: 'img/project_2.jpeg',
+      heading: 'Voice Assistant Using Java',
+      shortDesc: 'Dec 2022 - Apr 2023',
+      content:
+        "In this project, I have made a Voice Assistant named Jarvis which till now can perform basic tasks like opening or closing any application, sending messages, playing songs and showing weather forecast. I'm looking forward to add more feature in this.",
+      altStatus: 1,
+      readMore:
+        'https://github.com/priyanshu-baran/Voice_Assistant_Using_Java/blob/master/README.md',
+      codeLink: 'https://github.com/priyanshu-baran/Voice_Assistant_Using_Java',
+      videoLink:
+        'https://www.linkedin.com/posts/priyanshu-baran_jarvis-voiceassistant-java-activity-7051560861542326272-DZoq?utm_source=share&utm_medium=member_desktop',
+    },
+    {
+      photoUrl: 'img/project_1.jpeg',
+      heading: 'Boilerplate for websites',
+      shortDesc: 'Mar 2023 - Apr 2023',
+      content:
+        'I have made a starter template kind of thing for other websites to use directly mine, if they want to include the same features which I added in mine. Few of them which are, Login and Signup page, Home page, About page, Profile page, Error page etc.',
+      altStatus: 0,
+      readMore:
+        'https://github.com/priyanshu-baran/Boilerplate_For_Websites/blob/master/README.md',
+      codeLink: 'https://github.com/priyanshu-baran/Boilerplate_For_Websites',
+      demoLink: 'https://boilerplate-for-websites.netlify.app/',
     },
   ];
   const [projectsToShow, setProjectsToShow] = useState(3);
