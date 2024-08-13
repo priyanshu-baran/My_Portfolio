@@ -77,8 +77,8 @@
   width: 90%;
 }
 
-.bar .progress-line.css span {
-  width: 70%;
+.bar .progress-line.spring span {
+  width: 55%;
 }
 
 .bar .progress-line.nodejs span {
@@ -86,7 +86,7 @@
 }
 
 .bar .progress-line.mysql span {
-  width: 60%;
+  width: 70%;
 }
 
 .bar .progress-line.java span {
@@ -145,8 +145,8 @@
   content: "90%";
 }
 
-.progress-line.css span::after {
-  content: "70%";
+.progress-line.spring span::after {
+  content: "55%";
 }
 
 .progress-line.nodejs span::after {
@@ -154,7 +154,7 @@
 }
 
 .progress-line.mysql span::after {
-  content: "60%";
+  content: "70%";
 }
 
 .progress-line.java span::after {

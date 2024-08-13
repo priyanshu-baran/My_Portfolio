@@ -154,7 +154,7 @@ export const Projects = ({ isClicked }) => {
       readMore:
         'https://github.com/priyanshu-baran/E-Learning_Website/blob/main/README.md',
       codeLink: 'https://github.com/priyanshu-baran/E-Learning_Website',
-      demoLink: 'https://main.d1fwnnaavf7968.amplifyapp.com/',
+      demoLink: 'https://connect-learn-frontend.netlify.app/',
       videoLink:
         'https://www.linkedin.com/posts/priyanshu-baran_connectlearn-elearning-aws-activity-7150127207347105793-t1q2?utm_source=share&utm_medium=member_desktop',
     },

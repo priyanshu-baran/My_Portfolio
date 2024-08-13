@@ -8,8 +8,8 @@ export const Skills = ({ isClicked }) => {
   const isInView2 = useInView(inView2, { once: true });
   const skills_details = [
     {
-      class: 'css',
-      headline: 'CSS',
+      class: 'spring',
+      headline: 'Spring',
     },
     {
       class: 'react',
@@ -75,27 +75,27 @@ export const Skills = ({ isClicked }) => {
         <p id='aws'>
           AWS
           <br />
-          &#10025;&#10025;&#10025;
+          &#10025; &#10025; &#10025;
         </p>
         <p id='firebase'>
           Firebase
           <br />
-          &#10025;&#10025;&#10025;&#10025;
+          &#10025; &#10025; &#10025; &#10025;
         </p>
         <p id='aws-ec2'>
           AWS EC2
           <br />
-          &#10025;&#10025;&#10025;&#10025;
+          &#10025; &#10025;
         </p>
         <p id='aws-amplify'>
           AWS Amplify
           <br />
-          &#10025;&#10025;&#10025;&#10025;
+          &#10025; &#10025; &#10025; &#10025;
         </p>
         <p id='mern-stack'>
-          MERN Stack
+          AWS Cognito
           <br />
-          &#10025;&#10025;&#10025;&#10025;&#10025;
+          &#10025; &#10025; &#10025; &#10025;
         </p>
       </div>
       <div className='skill_body'>
