@@ -139,19 +139,19 @@ export const Main = ({ isClicked, setIsClicked }) => {
                 <label htmlFor='tab-2'>
                   <img
                     alt=''
-                    src='img/img_2.jpeg'
+                    src='img/img_2.jpg'
                   />
                 </label>
                 <label htmlFor='tab-3'>
                   <img
                     alt=''
-                    src='img/img_3.jpeg'
+                    src='img/img_3.jpg'
                   />
                 </label>
                 <label htmlFor='tab-4'>
                   <img
                     alt=''
-                    src='img/img_4.jpeg'
+                    src='img/img_4.jpg'
                   />
                 </label>
               </div>
@@ -162,15 +162,15 @@ export const Main = ({ isClicked, setIsClicked }) => {
                 />
                 <img
                   alt=''
-                  src='img/img_2.jpeg'
+                  src='img/img_2.jpg'
                 />
                 <img
                   alt=''
-                  src='img/img_3.jpeg'
+                  src='img/img_3.jpg'
                 />
                 <img
                   alt=''
-                  src='img/img_4.jpeg'
+                  src='img/img_4.jpg'
                 />
               </div>
             </div>
