@@ -57,7 +57,7 @@ export const ContactUs = ({ isClicked }) => {
                 ? 'cursor 1s 3 step-end, typingprojects 1.5s steps(9)'
                 : '',
             }}>
-            <i className='fa-solid fa-hashtag'></i> Contact
+            <i className='fa-solid fa-hashtag'></i>Contact
           </h1>
         </a>
       </center>
@@ -100,8 +100,8 @@ export const ContactUs = ({ isClicked }) => {
               <div className='address cu_details'>
                 <i className='fas fa-map-marker-alt'></i>
                 <div className='topic'>Address</div>
-                <div className='text-one'>Kharar, Mohali</div>
-                <div className='text-two'>Chandigarh</div>
+                <div className='text-one'>Varanasi</div>
+                <div className='text-two'>Uttar Pradesh</div>
               </div>
               <div className='phone cu_details'>
                 <i className='fas fa-phone-alt'></i>

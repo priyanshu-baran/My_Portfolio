@@ -64,40 +64,38 @@ export const About = ({ isClicked }) => {
   const timeline_details = [
     {
       icon: 'home',
+      title: '10th CBSE Board',
+      date: '2018-2019',
+      content:
+        'Completed my 10th from Mansarovar Public School, Bhopal, Madhya Pradesh.',
+      rowStatus: 1,
+      buttonContent: 0,
+      buttonURL: '',
+      additionalContent: '- With an aggregate of 91%',
+    },
+    {
+      icon: 'paper-plane',
       title: '12th CBSE Board',
       date: '2020-2021',
       content:
         'Completed my 12th from Mansarovar Public School, Bhopal, Madhya Pradesh.',
-      rowStatus: 1,
+      rowStatus: 2,
       buttonContent: 0,
       buttonURL: '',
       additionalContent: '- With an aggregate of 89%',
     },
     {
-      icon: 'star',
-      title: 'College Life',
+      icon: 'rocket',
+      title: 'Bachelor of Engineering (B.E.)',
       date: '2021-2025',
-      content:
-        'Currently enrolled in the Bachelor of Engineering (B.E.) program at Chandigarh University, specializing in Electrical Engineering.',
-      rowStatus: 2,
+      content: `Did my Bachelor's program from Chandigarh University in the domain of Electrical Engineering.`,
+      rowStatus: 1,
       buttonContent: 0,
       buttonURL: '',
-      additionalContent: '- With 8.26 CGPA till my 2nd year',
+      additionalContent: '- With a final grade of 8.2 CGPA',
     },
     {
-      icon: 'rocket',
-      title: 'First Internship',
-      date: '30th Oct 2022',
-      content:
-        'Completed my first internship with Edu-versity in the domain of Embedded System.',
-      rowStatus: 1,
-      buttonContent: 1,
-      buttonURL:
-        'https://drive.google.com/file/d/15xTtBfKNPZ9K3ihtYn-8YQDOUyctWQEZ/view?usp=share_link',
-      additionalContent: '',
-    },
-    {
-      icon: 'globe',
+      icon: 'star',
       title: 'First Appreciation Letter',
       date: '6th Jan 2023',
       content:
@@ -109,17 +107,39 @@ export const About = ({ isClicked }) => {
       additionalContent: '',
     },
     {
-      icon: 'paper-plane',
-      title: 'College Project',
-      date: 'March-May 2023',
-      content:
-        'I collaborated with my colleagues on a project centered around Home Automation utilizing Esp32 technology.',
+      icon: 'globe',
+      title: 'Master of Technology (M.Tech)',
+      date: '2025-2027',
+      content: `Persuing my Master's from Visvesvaraya National Institute of Technology (VNIT) in the domain of Computer Science Engineering.`,
       rowStatus: 1,
-      buttonContent: 1,
-      buttonURL:
-        'https://www.linkedin.com/posts/priyanshu-baran_homeautomation-matlabproject-teamwork-activity-7065665431537143808-_9pB?utm_source=share&utm_medium=member_desktop',
-      additionalContent: '',
+      buttonContent: 0,
+      buttonURL: '',
+      additionalContent: '- With an ongoing grade of 8.17 CGPA',
     },
+    // {
+    //   icon: 'rocket',
+    //   title: 'First Internship',
+    //   date: '30th Oct 2022',
+    //   content:
+    //     'Completed my first internship with Edu-versity in the domain of Embedded System.',
+    //   rowStatus: 1,
+    //   buttonContent: 1,
+    //   buttonURL:
+    //     'https://drive.google.com/file/d/15xTtBfKNPZ9K3ihtYn-8YQDOUyctWQEZ/view?usp=share_link',
+    //   additionalContent: '',
+    // },
+    // {
+    //   icon: 'paper-plane',
+    //   title: 'College Project',
+    //   date: 'March-May 2023',
+    //   content:
+    //     'I collaborated with my colleagues on a project centered around Home Automation utilizing Esp32 technology.',
+    //   rowStatus: 1,
+    //   buttonContent: 1,
+    //   buttonURL:
+    //     'https://www.linkedin.com/posts/priyanshu-baran_homeautomation-matlabproject-teamwork-activity-7065665431537143808-_9pB?utm_source=share&utm_medium=member_desktop',
+    //   additionalContent: '',
+    // },
     // {
     //   icon: 'map-marker-alt',
     //   title: 'Title of Section 6',
@@ -157,7 +177,7 @@ export const About = ({ isClicked }) => {
                 : '',
               marginTop: '150px',
             }}>
-            <i className='fa-solid fa-hashtag'></i> My Journey
+            <i className='fa-solid fa-hashtag'></i>My Journey
           </h1>
         </a>
       </center>

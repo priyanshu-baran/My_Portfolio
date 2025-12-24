@@ -74,32 +74,32 @@
 }
 
 .bar .progress-line.react span {
-  width: 90%;
+  width: 75%;
 }
 
 .bar .progress-line.spring span {
-  width: 55%;
+  width: 50%;
 }
 
 .bar .progress-line.nodejs span {
-  width: 80%;
-}
-
-.bar .progress-line.mysql span {
-  width: 70%;
-}
-
-.bar .progress-line.java span {
   width: 85%;
 }
 
+.bar .progress-line.mysql span {
+  width: 60%;
+}
+
+.bar .progress-line.java span {
+  width: 90%;
+}
+
 .bar .progress-line.mongodb span {
-  width: 75%;
+  width: 70%;
 }
 
 .progress-line span::before {
   position: absolute;
-  content: "";
+  content: '';
   top: -10px;
   right: 0;
   height: 0;
@@ -142,27 +142,27 @@
 }
 
 .progress-line.react span::after {
-  content: "90%";
+  content: '75%';
 }
 
 .progress-line.spring span::after {
-  content: "55%";
+  content: '50%';
 }
 
 .progress-line.nodejs span::after {
-  content: "80%";
+  content: '85%';
 }
 
 .progress-line.mysql span::after {
-  content: "70%";
+  content: '60%';
 }
 
 .progress-line.java span::after {
-  content: "85%";
+  content: '90%';
 }
 
 .progress-line.mongodb span::after {
-  content: "75%";
+  content: '70%';
 }
 
 .skills {
@@ -199,14 +199,14 @@
   border-radius: 11px;
   position: relative;
   box-shadow: 20px 20px #83af9b;
-  font-family: "Baloo 2", cursive;
+  font-family: 'Baloo 2', cursive;
 }
 
 .skills_bubble p:after {
   transform: translatey(0px);
   -webkit-animation: float2 5s ease-in-out infinite;
   animation: float2 5s ease-in-out infinite;
-  content: ".";
+  content: '.';
   font-weight: bold;
   -webkit-text-fill-color: #ece5ce;
   text-shadow: 22px 22px #83af9b;
@@ -338,7 +338,7 @@
   left: 50px;
 }
 
-@media (max-width:1800px) {
+@media (max-width: 1800px) {
   .skill_img {
     left: 40px;
   }

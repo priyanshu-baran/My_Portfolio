@@ -9,7 +9,7 @@ export const Skills = ({ isClicked }) => {
   const skills_details = [
     {
       class: 'spring',
-      headline: 'Spring',
+      headline: 'Spring Boot',
     },
     {
       class: 'react',
@@ -55,7 +55,7 @@ export const Skills = ({ isClicked }) => {
                 : '',
               marginBottom: '160px',
             }}>
-            <i className='fa-solid fa-hashtag'></i> Skills I am good at
+            <i className='fa-solid fa-hashtag'></i>Skills I am good at
           </h1>
         </a>
       </center>

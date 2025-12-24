@@ -136,14 +136,14 @@ export const ProjectData = ({
 
 export const Projects = ({ isClicked }) => {
   const project_details = [
-    {
-      photoUrl: 'img/project_5.jpeg',
-      heading: 'Digital Adda Website',
-      shortDesc: 'Jan 2024 - Present',
-      content:
-        'This website is a combination of almost all the commonly used modern digital tools that are available in any websites, such as calculator, weather app, notes, to-do list, file uploading and downloading, etc. along with user login and signup page.',
-      altStatus: 0,
-    },
+    // {
+    //   photoUrl: 'img/project_5.jpeg',
+    //   heading: 'Digital Adda Website',
+    //   shortDesc: 'Jan 2024 - Present',
+    //   content:
+    //     'This website is a combination of almost all the commonly used modern digital tools that are available in any websites, such as calculator, weather app, notes, to-do list, file uploading and downloading, etc. along with user login and signup page.',
+    //   altStatus: 0,
+    // },
     {
       photoUrl: 'img/project_4.jpeg',
       heading: 'E-Learning Website UI Design',
@@ -233,7 +233,7 @@ export const Projects = ({ isClicked }) => {
               whiteSpace: 'nowrap',
               overflow: 'hidden',
             }}>
-            <i className='fa-solid fa-hashtag'></i> My Work
+            <i className='fa-solid fa-hashtag'></i>My Work
           </h1>
         </a>
       </center>
