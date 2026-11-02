@@ -284,20 +284,85 @@ main {
   transform: scale(0.95);
 }
 
-@media (max-width:1800px) {
-  .text h2 {
-    font-size: 5.5rem;
+@media (max-width: 1100px) {
+  main {
+    height: 100svh;
   }
 
-  .text h1 {
-    font-size: 4.75rem;
+  .img_header {
+    padding: 0.75rem 1rem;
   }
 
-  .text h3 {
-    font-size: 3rem;
+  .logo {
+    top: 16px;
+    left: 24px;
+    width: clamp(110px, 18vw, 180px);
   }
 
   .cssbuttons-io-button {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 700px) {
+  main {
+    min-height: 100svh;
+  }
+
+  .parallax {
+    transition: none;
+  }
+
+  .parallax:not(.bg-img):not(.text) {
+    display: none;
+  }
+
+  .bg-img {
+    width: auto;
+    height: 100%;
+    max-width: none;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) !important;
+  }
+
+  .text {
+    top: 42%;
+    left: 50%;
+    width: 100%;
+    padding: 0 18px;
+    transform: translate(-50%, -50%) !important;
+  }
+
+  .cssbuttons-io-button {
+    top: 28px;
+    min-height: 48px;
+    left: 50%;
+  }
+
+  .mountain-1,
+  .mountain-2,
+  .mountain-3,
+  .mountain-4,
+  .mountain-5,
+  .mountain-6,
+  .mountain-7,
+  .mountain-8,
+  .mountain-9,
+  .mountain-10 {
+    transform: translate(-50%, -50%) !important;
+  }
+}
+
+@media (max-width:1800px) {
+  .cssbuttons-io-button {
     top: 20px;
+  }
+}
+
+@media (max-width: 700px) {
+  .cssbuttons-io-button {
+    margin: 0 auto;
   }
 }

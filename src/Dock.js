@@ -79,6 +79,7 @@ const Docks = ({ isClicked }) => {
                 src={image}
                 key={index}
                 mouseX={mouseX}
+                label={['Home', 'About', 'Skills', 'Projects', 'Contact', 'LinkedIn', 'GitHub', 'Twitter'][index]}
                 onClick={() => handleImgClick(index)}
               />
             ))
@@ -87,6 +88,7 @@ const Docks = ({ isClicked }) => {
                 src={image}
                 key={index}
                 mouseX={mouseX}
+                label={['Home', 'About', 'Skills', 'Projects', 'Contact', 'LinkedIn', 'GitHub', 'Twitter'][index]}
                 onClick={() => handleImgClick(index)}
               />
             ))}
@@ -117,7 +119,7 @@ const widthOutput = [
   baseWidth,
 ];
 
-const Img = ({ src, mouseX, onClick }) => {
+const Img = ({ src, mouseX, onClick, label }) => {
   const distance = useMotionValue(beyondTheDistanceLimit);
   const width = useSpring(useTransform(distance, distanceInput, widthOutput), {
     damping: 25,
@@ -125,6 +127,14 @@ const Img = ({ src, mouseX, onClick }) => {
   });
   const ref = useRef();
   useEffect(() => {
+    const usesMagnification =
+      window.matchMedia('(pointer: fine)').matches &&
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!usesMagnification) {
+      distance.set(beyondTheDistanceLimit);
+      return undefined;
+    }
+    let frameId;
     const updateDistance = () => {
       const el = ref.current;
       const mouseXVal = mouseX.get();
@@ -136,11 +146,11 @@ const Img = ({ src, mouseX, onClick }) => {
       } else {
         distance.set(beyondTheDistanceLimit);
       }
-      requestAnimationFrame(updateDistance);
+      frameId = requestAnimationFrame(updateDistance);
     };
-    requestAnimationFrame(updateDistance);
+    frameId = requestAnimationFrame(updateDistance);
     return () => {
-      cancelAnimationFrame(updateDistance);
+      cancelAnimationFrame(frameId);
     };
   }, [distance, mouseX]);
   return (
@@ -148,8 +158,14 @@ const Img = ({ src, mouseX, onClick }) => {
       ref={ref}
       src={src}
       className='icon'
+      alt={label}
+      role='button'
+      tabIndex='0'
       style={{ width }}
       onClick={onClick}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter' || event.key === ' ') onClick();
+      }}
     />
   );
 };

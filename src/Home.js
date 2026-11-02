@@ -1,15 +1,18 @@
 import { gsap } from 'gsap';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Preloader } from './Preloader';
 import { useNavigate } from 'react-router-dom';
 
 export const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [isBigger, setIsBigger] = useState();
-  const timeline = gsap.timeline();
+  const timelineRef = useRef(null);
   const usenavigate = useNavigate('');
   useEffect(() => {
+    const timeline = gsap.timeline();
+    timelineRef.current = timeline;
     const parallax_el = document.querySelectorAll('.parallax');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const hasFinePointer = window.matchMedia('(pointer: fine)').matches;
     let xValue = 0,
       yValue = 0,
       rotateDegrees = 0;
@@ -36,7 +39,7 @@ export const Home = () => {
         }deg)`;
       });
     };
-    timeline.fromTo(
+    if (!reducedMotion) timeline.fromTo(
       '.home_body',
       {
         opacity: 0,
@@ -46,7 +49,7 @@ export const Home = () => {
       },
       '0'
     );
-    timeline.delay(3);
+    timeline.delay(reducedMotion ? 0 : 3);
     timeline.fromTo(
       '.bg-img',
       {
@@ -60,7 +63,7 @@ export const Home = () => {
       },
       '1'
     );
-    Array.from(parallax_el)
+    if (!reducedMotion) Array.from(parallax_el)
       .filter((el) => !el.classList.contains('text'))
       .forEach((el) => {
         const distance = Number(el.dataset.distance);
@@ -103,25 +106,25 @@ export const Home = () => {
         },
         '3'
       );
-    setTimeout(() => {
+    const initialUpdate = window.setTimeout(() => {
       update(0);
-    }, 2000);
-    window.addEventListener('mousemove', (e) => {
+    }, reducedMotion ? 0 : 2000);
+    const handleMouseMove = (e) => {
+      if (!hasFinePointer) return;
       if (timeline.isActive()) return;
       xValue = e.clientX - window.innerWidth / 2;
       yValue = e.clientY - window.innerHeight / 2;
       rotateDegrees = (xValue / window.innerWidth) * 20;
       update(e.clientX);
-    });
-    if (window.innerWidth >= 1100) {
-      setIsBigger(window.innerWidth * 0.6);
-    } else {
-      setIsBigger(window.innerWidth * 1.6);
-    }
+    };
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
     return () => {
       timeline.kill();
+      timelineRef.current = null;
+      window.clearTimeout(initialUpdate);
+      window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, [timeline]);
+  }, []);
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
@@ -140,7 +143,7 @@ export const Home = () => {
               className='logo'
             />
           </header>
-          <main style={{ maxHeight: `${isBigger}px` }}>
+          <main>
             <div className='vignette hiding'></div>
             <img
               src='img/background.png'

@@ -4,13 +4,17 @@
   margin: 0;
   padding: 0;
   border: none;
-  cursor: none;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+#root {
+  padding-bottom: 90px;
 }
 
 .dock {
@@ -21,6 +25,8 @@ html {
   justify-content: center;
   z-index: 9999;
   user-select: none;
+  padding-bottom: env(safe-area-inset-bottom);
+  overflow: hidden;
 }
 
 .dock_icons {
@@ -35,6 +41,8 @@ html {
 .icon {
   padding: 5px;
   height: auto;
+  cursor: pointer;
+  object-fit: contain;
 }
 
 .progress-bar {
@@ -58,6 +66,72 @@ html {
   pointer-events: none;
   z-index: 99999;
   position: fixed;
+}
+
+@media (pointer: fine) {
+  body,
+  button,
+  a,
+  input,
+  textarea {
+    cursor: none;
+  }
+}
+
+@media (max-width: 700px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .dock {
+    padding: 0 8px env(safe-area-inset-bottom);
+  }
+
+  .dock_icons {
+    width: min(100%, 520px);
+    height: 62px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 18px 18px 0 0;
+    scrollbar-width: none;
+  }
+
+  .dock_icons::-webkit-scrollbar {
+    display: none;
+  }
+
+  .icon {
+    width: 48px !important;
+    min-width: 48px;
+    padding: 7px;
+  }
+
+  .progress-bar {
+    height: 5px;
+  }
+
+  .section_heading {
+    margin: 56px 0 42px;
+    max-width: calc(100vw - 32px);
+    font-size: clamp(2rem, 9vw, 3rem);
+    white-space: normal;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }
 
 .section_heading {

@@ -1,6 +1,6 @@
 .img_body {
   display: flex;
-  height: 100vh;
+  min-height: 100svh;
   text-align: center;
   align-items: center;
   margin-bottom: -100px;
@@ -597,6 +597,160 @@ header .close:hover {
 @media (max-width:1800px) {
   .scrolldown {
     left: 55%;
+  }
+
+  @media (max-width: 1100px) {
+    .img_body {
+      min-height: auto;
+      padding: 104px 28px 120px;
+      margin-bottom: 0;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 28px;
+    }
+
+    .img_header .logo {
+      width: 120px !important;
+      margin-left: 0 !important;
+      left: 24px;
+    }
+
+    .Switch .Toggle {
+      top: 18px;
+      right: 18px;
+      width: 128px;
+      height: 64px;
+    }
+
+    .Switch .Toggle .Button {
+      width: 38px;
+      height: 38px;
+      top: 8px;
+      left: 8px;
+    }
+
+    .Switch .Toggle[data-time=day] .Button {
+      left: 74px;
+      top: 8px;
+    }
+
+    .center {
+      width: min(100%, 620px);
+      padding: 42px 86px 42px 0;
+    }
+
+    .center .img-card {
+      width: min(100%, 400px);
+      height: min(52vw, 350px);
+      margin: 0 auto;
+    }
+
+    .sliders {
+      right: 0;
+      top: 25px;
+    }
+
+    .sliders label {
+      width: 78px;
+      height: 68px;
+    }
+
+    .front_text {
+      position: static;
+      flex: 1 1 360px;
+      left: auto;
+      top: auto;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+    }
+
+    .front_text h6 {
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+    }
+
+    .scrolldown {
+      position: relative;
+      top: auto;
+      left: auto;
+      margin: 8px auto 0;
+      flex-basis: 100%;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .img_body {
+      padding: 92px 16px 104px;
+      gap: 14px;
+    }
+
+    .center {
+      width: 100%;
+      padding: 12px 0 0;
+    }
+
+    .center .img-card {
+      width: min(100%, 330px);
+      height: min(76vw, 270px);
+      transform: none !important;
+    }
+
+    .img-card img {
+      display: none;
+      position: relative;
+      transform: none !important;
+    }
+
+    #tab-1:checked~.img-card img:nth-child(1),
+    #tab-2:checked~.img-card img:nth-child(2),
+    #tab-3:checked~.img-card img:nth-child(3),
+    #tab-4:checked~.img-card img:nth-child(4) {
+      display: block;
+    }
+
+    .sliders {
+      position: static;
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 12px;
+    }
+
+    .sliders label {
+      width: clamp(56px, 18vw, 76px);
+      height: clamp(48px, 14vw, 68px);
+      margin: 0;
+    }
+
+    .front_text {
+      flex-basis: 100%;
+      font-size: clamp(1.7rem, 9vw, 2.8rem);
+    }
+
+    .front_text h6 {
+      margin: 14px 0;
+      font-size: 0.92rem;
+    }
+
+    .front_btns {
+      height: auto;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .download_btn,
+    .view-modal {
+      min-height: 46px;
+    }
+
+    .share_btn {
+      margin-top: 0;
+    }
+
+    .popup.show {
+      top: 50%;
+      left: 50%;
+      width: min(92vw, 380px);
+    }
   }
 
   .share_btn {

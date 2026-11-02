@@ -2,8 +2,13 @@ import { useEffect } from 'react';
 
 export const Cursor = ({ isClicked }) => {
   useEffect(() => {
+    if (!window.matchMedia('(pointer: fine)').matches ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return undefined;
+    }
     const coords = { x: 0, y: 0 };
     const circles = document.querySelectorAll('.circle');
+    let frameId;
     circles.forEach((circle) => {
       circle.x = 0;
       circle.y = 0;
@@ -27,12 +32,13 @@ export const Cursor = ({ isClicked }) => {
         x += (nextCircle.x - x) * 0.2;
         y += (nextCircle.y - y) * 0.2;
       });
-      requestAnimationFrame(animateCircles);
+      frameId = requestAnimationFrame(animateCircles);
     };
     animateCircles();
     window.addEventListener('mousemove', handleMouseMove);
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
+      cancelAnimationFrame(frameId);
     };
   }, []);
   return (
