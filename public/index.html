@@ -3,40 +3,61 @@
 
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#000000" />
-  <meta name="description" content="Web site created using create-react-app" />
-  <title>My Web-folio</title>
-  <link rel="shortcut icon" href="img/logo_dark.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#05abe0" />
+  <meta name="color-scheme" content="light dark" />
+  <title>Priyanshu Baran | Full-Stack Developer Portfolio</title>
+  <meta name="description"
+    content="Portfolio of Priyanshu Baran, a full-stack developer (Java, Spring Boot, React, Node.js, AWS) and M.Tech CSE student at VNIT. Projects, journey, skills and contact." />
+  <link rel="canonical" href="https://my-webfolio.netlify.app/" />
+
+  <!-- Social share preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Priyanshu Baran | Full-Stack Developer" />
+  <meta property="og:description"
+    content="Java, Spring Boot, React, Node.js and AWS projects, plus my journey so far." />
+  <meta property="og:url" content="https://my-webfolio.netlify.app/" />
+  <meta property="og:image" content="https://my-webfolio.netlify.app/img/og-preview.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="%PUBLIC_URL%/img/logo_dark.png" />
+
+  <!-- One font request (was 3 chained @imports) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Quattrocento+Sans&display=swap" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
+
   <style>
-    #mobileMessage {
-      display: none;
+    /* Stops the white flash between the loader and the first paint */
+    html,
+    body {
+      background: #0d1b24;
+      margin: 0;
     }
 
-    @media only screen and (max-width: 1500px) {
-      #mobileMessage {
-        display: block;
-        text-align: center;
-        padding: 20px;
-        background-color: #f44336;
-        color: #fff;
-      }
-
-      #root {
-        display: none;
-      }
+    html[data-theme="day"] body {
+      background: #05abe0;
     }
   </style>
+  <script>
+    // Apply the saved/system theme before React mounts, so there is no flash.
+    (function () {
+      try {
+        var s = localStorage.getItem('theme');
+        var night = s ? s === 'night' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-theme', night ? 'night' : 'day');
+      } catch (e) { document.documentElement.setAttribute('data-theme', 'day'); }
+    })();
+  </script>
 </head>
 
 <body>
-  <noscript>You need to enable JavaScript to run this app.</noscript>
-  <div id="mobileMessage">Kindly open this website on a desktop or laptop for a better user experience, since it is
-    currently not responsive for mobile devices. <br /><br /><br /> Also don't try to access this page on mobile by
-    enabling desktop site option on the browser.</div>
+  <noscript>This portfolio needs JavaScript. You can reach me at baranpriyanshu3@gmail.com or
+    github.com/priyanshu-baran.</noscript>
   <div id="root"></div>
 </body>
 
