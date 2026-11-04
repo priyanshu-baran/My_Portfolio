@@ -1,7 +1,13 @@
 import { useInView } from 'framer-motion';
-import { useEffect, useRef, useState } from 'react';
-import Globe from 'react-globe.gl';
+import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import { toast } from 'react-hot-toast';
+
+import { usePrefersReducedMotion } from './hooks';
+
+// three.js is big: only fetch it when the visitor actually reaches this section.
+const Globe = lazy(() => import('react-globe.gl'));
+
+const CONTACT_EMAIL = 'baranpriyanshu3@gmail.com';
 
 export const ContactUs = ({ isClicked }) => {
   const inView = useRef(null);
@@ -10,7 +16,7 @@ export const ContactUs = ({ isClicked }) => {
   const [mail, setMail] = useState('');
   const [msg, setMsg] = useState('');
   const globeEl = useRef();
-  const arcData = [...Array(10).keys()].map(() => ({
+  const arcData = useMemo(() => [...Array(10).keys()].map(() => ({
     startLat: (Math.random() - 0.5) * 180,
     startLng: (Math.random() - 0.5) * 360,
     endLat: (Math.random() - 0.5) * 180,
@@ -19,22 +25,43 @@ export const ContactUs = ({ isClicked }) => {
       ['red', 'white', 'blue', 'green'][Math.round(Math.random() * 3)],
       ['red', 'white', 'blue', 'green'][Math.round(Math.random() * 3)],
     ],
-  }));
+  })), []);
   const handleSubmit = (e) => {
     e.preventDefault();
-    toast('Currently not working', {
-      icon: '😞',
+    // No backend: hand the message to the visitor's mail app, ready to send.
+    const subject = encodeURIComponent(`Portfolio message from ${name}`);
+    const body = encodeURIComponent(`${msg}\n\n${name}\n${mail}`);
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+    toast('Opening your email app...', {
+      icon: '✉️',
       style: isClicked && {
         background: '#333',
         color: '#fff',
       },
     });
   };
+  const reduce = usePrefersReducedMotion();
+  const wrapRef = useRef(null);
+  const wrapInView = useInView(wrapRef, { once: true, margin: '200px' });
+  const [size, setSize] = useState({ w: 650, h: 600 });
   useEffect(() => {
-    globeEl.current.controls().autoRotate = true;
-    globeEl.current.controls().autoRotateSpeed = 1.2;
-    globeEl.current.controls().enableZoom = false;
+    const el = wrapRef.current;
+    if (!el) return undefined;
+    const ro = new ResizeObserver(() => {
+      const w = Math.round(el.clientWidth);
+      const h = Math.round(el.clientHeight);
+      if (w && h) setSize({ w, h });
+    });
+    ro.observe(el);
+    return () => ro.disconnect();
   }, []);
+  const onGlobeReady = () => {
+    const controls = globeEl.current?.controls();
+    if (!controls) return;
+    controls.autoRotate = !reduce;
+    controls.autoRotateSpeed = 1.2;
+    controls.enableZoom = false;
+  };
   useEffect(() => {
     const heading = document.getElementById('heading4');
     heading.addEventListener('animationend', (e) => {
@@ -69,30 +96,37 @@ export const ContactUs = ({ isClicked }) => {
             : 'linear-gradient(to bottom, rgba(24, 26, 66, 0.1) 0%, rgba(17, 28, 43, 0.1) 12%)',
         }}>
         <div
+          ref={wrapRef}
+          className='globe_wrap'
           style={{
             background: isClicked
               ? 'linear-gradient(to bottom, rgba(83, 203, 241, 0.1) 87%, rgba(5, 171, 224, 0.1) 100%)'
               : 'linear-gradient(to bottom, rgba(24, 26, 66, 0.1) 0%, rgba(17, 28, 43, 0.1) 12%)',
-          }}>
-          <Globe
-            ref={globeEl}
-            width={650}
-            height={600}
-            globeImageUrl={`//unpkg.com/three-globe/example/img/earth-${
-              isClicked ? 'day' : 'blue-marble'
-            }.jpg`}
-            backgroundImageUrl={`${
-              isClicked
-                ? ''
-                : '//unpkg.com/three-globe/example/img/night-sky.png'
-            }`}
-            atmosphereAltitude={0.25}
-            arcsData={arcData}
-            arcColor={'color'}
-            arcDashLength={() => Math.random()}
-            arcDashGap={() => Math.random()}
-            arcDashAnimateTime={() => Math.random() * 4000 + 500}
-          />
+          }}
+          role='img'
+          aria-label='Rotating globe with animated connection arcs'>
+          {wrapInView && (
+            <Suspense fallback={null}>
+              <Globe
+                ref={globeEl}
+                width={size.w}
+                height={size.h}
+                onGlobeReady={onGlobeReady}
+                globeImageUrl={`img/globe/earth-${
+                  isClicked ? 'day' : 'blue-marble'
+                }.webp`}
+                backgroundImageUrl={`${
+                  isClicked ? '' : 'img/globe/night-sky.webp'
+                }`}
+                atmosphereAltitude={0.25}
+                arcsData={arcData}
+                arcColor={'color'}
+                arcDashLength={() => Math.random()}
+                arcDashGap={() => Math.random()}
+                arcDashAnimateTime={() => (reduce ? 0 : Math.random() * 4000 + 500)}
+              />
+            </Suspense>
+          )}
         </div>
         <div className={`cu_container ${isClicked ? '' : 'dark'}`}>
           <div className='cu_content'>
@@ -112,7 +146,7 @@ export const ContactUs = ({ isClicked }) => {
               <div className='email cu_details'>
                 <i className='fas fa-envelope'></i>
                 <div className='topic'>Email</div>
-                <div className='text-one'>baranpriyanshu3@gmail.com</div>
+                <a className='text-one' href='mailto:baranpriyanshu3@gmail.com'>baranpriyanshu3@gmail.com</a>
                 <div className='text-two'>
                   elitecoder.coregamer1803@gmail.com
                 </div>
@@ -129,27 +163,32 @@ export const ContactUs = ({ isClicked }) => {
                 <div className={`cu_input-box ${isClicked ? '' : 'dark'}`}>
                   <input
                     type='text'
+                    id='cu-name'
+                    autoComplete='name'
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     required
                   />
-                  <label>Enter your name</label>
+                  <label htmlFor='cu-name'>Enter your name</label>
                 </div>
                 <div className={`cu_input-box ${isClicked ? '' : 'dark'}`}>
                   <input
-                    type='text'
+                    type='email'
+                    id='cu-email'
+                    autoComplete='email'
                     value={mail}
                     onChange={(e) => setMail(e.target.value)}
                     required
                   />
-                  <label>Enter your email</label>
+                  <label htmlFor='cu-email'>Enter your email</label>
                 </div>
                 <div className={`message-box ${isClicked ? '' : 'dark'}`}>
                   <textarea
+                    id='cu-msg'
                     value={msg}
                     onChange={(e) => setMsg(e.target.value)}
                     required></textarea>
-                  <label>Enter your message</label>
+                  <label htmlFor='cu-msg'>Enter your message</label>
                 </div>
                 <div className='cu_input-box'>
                   <input

@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400");
-
 .blog-card {
   display: flex;
   flex-direction: column;
@@ -19,7 +17,7 @@
 }
 
 .blog-card a:hover {
-  color: #5ad67d;
+  color: #177a3a;
 }
 
 .blog-card:hover .photo {
@@ -120,7 +118,7 @@
   font-size: 1rem;
   font-weight: 300;
   text-transform: uppercase;
-  color: #a2a2a2;
+  color: #6b6b6b;
   margin-top: 5px;
 }
 
@@ -130,7 +128,7 @@
 }
 
 .blog-card .description .read-more a {
-  color: #5ad67d;
+  color: #177a3a;
   display: inline-block;
   position: relative;
 }
@@ -163,7 +161,7 @@
   content: "";
   position: absolute;
   height: 5px;
-  background: #5ad67d;
+  background: #177a3a;
   width: 35px;
   top: -0.75rem;
   border-radius: 3px;

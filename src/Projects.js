@@ -80,14 +80,14 @@ export const ProjectData = ({
         </div>
       </div>
       {codeLink && (
-        <div className='box'>
+        <div className='box' data-label='Code'>
           <div className='front-face'>
             <div className='icon'>
               <i className='fa fa-code'></i>
             </div>
             <span>Code</span>
           </div>
-          <div className='back-face'>
+          <div className='back-face' data-label='Code'>
             <span>
               <a
                 href={`${codeLink}`}
@@ -100,14 +100,14 @@ export const ProjectData = ({
         </div>
       )}
       {(demoLink || videoLink) && (
-        <div className='box'>
+        <div className='box' data-label='Demo'>
           <div className='front-face'>
             <div className='icon'>
               <i className='fa fa-rocket'></i>
             </div>
             <span>Demo</span>
           </div>
-          <div className='back-face'>
+          <div className='back-face' data-label='Demo'>
             <span>
               {demoLink && (
                 <a
@@ -259,7 +259,13 @@ export const Projects = ({ isClicked }) => {
             onClick={toggleProjectsToShow}>
             <div className='sh_bg'></div>
             <div className='sh_button'>
-              <a href='#showhide_btn'>
+              <a
+                href='#showhide_btn'
+                aria-label={
+                  projectsToShow === 3
+                    ? 'Show more projects'
+                    : 'Show fewer projects'
+                }>
                 <i
                   className={`fa fa-chevron-${
                     projectsToShow === 3 ? 'down' : 'up'

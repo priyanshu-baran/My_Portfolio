@@ -7,6 +7,8 @@
 }
 
 .center {
+  --cw: 400px;
+  --ch: 350px;
   position: relative;
   width: 770px;
   perspective: 1200px;
@@ -17,8 +19,8 @@
 
 .center .img-card {
   position: relative;
-  height: 350px;
-  width: 400px;
+  height: var(--ch);
+  width: var(--cw);
   transform-style: preserve-3d;
   transition: transform .5s ease-in;
 }
@@ -31,21 +33,21 @@
 }
 
 .img-card img:nth-child(1) {
-  transform: rotateX(-270deg) translateY(-175px);
+  transform: rotateX(-270deg) translateY(calc(var(--ch) / -2));
   transform-origin: top left;
 }
 
 .img-card img:nth-child(2) {
-  transform: translateZ(175px);
+  transform: translateZ(calc(var(--ch) / 2));
 }
 
 .img-card img:nth-child(3) {
-  transform: rotateX(-90deg) translateY(175px);
+  transform: rotateX(-90deg) translateY(calc(var(--ch) / 2));
   transform-origin: bottom center;
 }
 
 .img-card img:nth-child(4) {
-  transform: rotateX(-180deg) translateY(350px) translateZ(175px);
+  transform: rotateX(-180deg) translateY(var(--ch)) translateZ(calc(var(--ch) / 2));
   transform-origin: bottom right;
 }
 
@@ -128,7 +130,7 @@ input[type=radio] {
   left: 0;
   background: linear-gradient(to bottom, #111c2b 0%, #353782 12%, #ff6687 28%, #ffb959 45%, #87e0fd 72%, #53cbf1 87%, #05abe0 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#111c2b", endColorstr="#05abe0", GradientType=0);
-  transition: top 2.5s ease;
+  transition: top 1.2s cubic-bezier(0.45, 0, 0.2, 1);
 }
 
 .Switch[data-time=day]::before {
@@ -145,6 +147,8 @@ input[type=radio] {
   top: 20px;
   right: 20px;
   border-radius: 200px;
+  padding: 0;
+  cursor: pointer;
 }
 
 .Switch .Toggle[data-time=day] .Button {
@@ -167,7 +171,7 @@ input[type=radio] {
   pointer-events: none;
   top: 15px;
   left: 15px;
-  transition: left 2.5s ease, box-shadow 2.5s ease, border 2.5s ease, top 2.5s ease;
+  transition: left 0.7s cubic-bezier(0.45, 0, 0.2, 1), box-shadow 0.7s ease, border 0.7s ease, top 0.7s ease;
   background: #EDDDD4;
   background: linear-gradient(135deg, #edddd4 0%, #fcfafa 50%, #edddd4 51%, #fcfafa 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e2e2e2", endColorstr="#fefefe", GradientType=1);
@@ -187,13 +191,14 @@ input[type=radio] {
   background: #FFFFFF;
   background: radial-gradient(ellipse at center, white 0%, #ffbe0b 50%, #fb5607 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#fefcea", endColorstr="#f1da36", GradientType=1);
-  transition: opacity 2.5s ease;
+  transition: opacity 0.7s ease;
   opacity: 0;
 }
 
 @font-face {
   font-family: 'Rocher';
   src: url(https://assets.codepen.io/9632/RocherColorGX.woff2);
+  font-display: swap;
 }
 
 .front_text {
@@ -213,7 +218,9 @@ input[type=radio] {
   user-select: none;
 }
 
-.front_text h6 {
+.front_text .tagline {
+  font-size: 0.67em;
+  font-weight: 700;
   margin: 20px;
 }
 
@@ -502,6 +509,8 @@ header .close:hover {
 }
 
 .scrolldown {
+  background: transparent;
+  cursor: pointer;
   --color: white;
   --sizeX: 30px;
   --sizeY: 50px;

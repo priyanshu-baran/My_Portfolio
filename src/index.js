@@ -10,5 +10,8 @@ import './css/skills.css';
 import './css/projects.css';
 import './css/about.css';
 import './css/contactUs.css';
+import './css/hero.css';
+import './css/responsive.css';
+import './css/a11y.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(<App />);

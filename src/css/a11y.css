@@ -1,0 +1,165 @@
+/* ===== Accessibility, focus, reduced motion, theme transition ===== */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: fixed;
+  left: 12px;
+  top: -64px;
+  z-index: 100001;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: #000;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
+:focus-visible {
+  outline: 3px solid #ffbf00;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* The custom glowing cursor replaces the pointer for mouse users only */
+@media (hover: hover) and (pointer: fine) {
+  * {
+    cursor: none;
+  }
+
+  input,
+  textarea {
+    cursor: text;
+  }
+}
+
+body {
+  overflow-x: clip;
+}
+
+/* Smooth scrolling only for people who haven't asked for less motion */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Colours ease between themes (fallback when View Transitions is unavailable) */
+.wrapper .row section,
+.skill-bars,
+.blog-card,
+.blog-card .description,
+.cu_container,
+.section_heading,
+.front_text .tagline,
+.cu_input-box input,
+.message-box textarea {
+  transition: background-color 0.7s ease, color 0.7s ease;
+}
+
+/* Theme change: circular reveal from the toggle (View Transitions API) */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-new(root) {
+  animation: vtReveal 0.8s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes vtReveal {
+  from {
+    clip-path: circle(0 at var(--vt-x, 100%) var(--vt-y, 0));
+  }
+
+  to {
+    clip-path: circle(var(--vt-r, 150vmax) at var(--vt-x, 100%) var(--vt-y, 0));
+  }
+}
+
+html.vt-active .Switch::before,
+html.vt-active .wrapper .row section,
+html.vt-active .skill-bars,
+html.vt-active .blog-card,
+html.vt-active .blog-card .description,
+html.vt-active .cu_container,
+html.vt-active .section_heading,
+html.vt-active .front_text .tagline {
+  transition: none !important;
+}
+
+/* Tap ripple (touch replacement for the cursor trail) */
+.tap-ripple {
+  position: fixed;
+  width: 22px;
+  height: 22px;
+  margin: -11px 0 0 -11px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  animation: tapRipple 0.6s ease-out forwards;
+}
+
+@keyframes tapRipple {
+  from {
+    transform: scale(0.4);
+    opacity: 0.9;
+  }
+
+  to {
+    transform: scale(3.2);
+    opacity: 0;
+  }
+}
+
+/* Respect the OS "reduce motion" setting everywhere */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .skills_bubble p,
+  .skills_bubble p::after,
+  .scrolldown::before,
+  .chevrondown,
+  .sh_bg {
+    animation: none !important;
+  }
+
+  .tap-ripple {
+    display: none;
+  }
+}
+
+/* Readable fallback if the decorative colour font fails to load */
+html[data-theme='night'] .front_text h1 { color: #fff; }
+html[data-theme='day'] .front_text h1 { color: #111; }
+
+/* Skill bubble text: enough contrast on the pastel cards */
+#aws-ec2, #aws-amplify, #aws-amplify * { color: #1f2a2a !important; }
+
+/* Light card (day theme) needs darker secondary text than the dark card */
+html[data-theme='day'] .cu_container .text-one,
+html[data-theme='day'] .cu_container .text-two { color: #5f5f6b; }

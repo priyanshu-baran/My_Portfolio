@@ -134,8 +134,9 @@ export const Skills = ({ isClicked }) => {
               : 'none',
           }}
           className='skill_img'
-          src='img/skills.png'
+          src='img/skills.webp'
           alt=''
+          loading='lazy'
         />
       </div>
     </div>

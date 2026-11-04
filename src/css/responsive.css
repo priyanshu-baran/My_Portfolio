@@ -1,0 +1,602 @@
+/* ===========================================================================
+   Responsive layer.
+   Desktop (>= 1100px) keeps the original layout; these rules refine the dock
+   and add tablet (<= 1099px) and phone (<= 700px) layouts.
+   =========================================================================== */
+
+/* ---------- Dock: semantic list + labels (all sizes) ---------- */
+.dock {
+  transition: transform 0.35s ease;
+  pointer-events: none;
+}
+
+.dock_icons {
+  list-style: none;
+  pointer-events: auto;
+}
+
+.dock_li {
+  display: flex;
+  align-items: flex-end;
+}
+
+.dock_item {
+  display: block;
+  position: relative;
+  flex: none;
+  width: 60px;
+  border-radius: 14px;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dock_item .icon {
+  display: block;
+  width: 100%;
+}
+
+.dock_item.is-current::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -3px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ff3466;
+  transform: translateX(-50%);
+}
+
+@media (hover: hover) {
+  .dock_item::after {
+    content: attr(data-label);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translate(-50%, 4px);
+    padding: 4px 10px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.82);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+
+  .dock_item:hover::after,
+  .dock_item:focus-visible::after {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+/* Room at the end of the page so the dock never sits on top of content */
+.dock-spacer {
+  height: calc(var(--dock-h, 70px) + env(safe-area-inset-bottom, 0px) + 16px);
+}
+
+/* ---------- Main-page hero: desktop details kept from the old inline styles ---------- */
+.main-logo {
+  width: 12%;
+  margin-left: -120px;
+}
+
+.popup-backdrop {
+  display: none;
+}
+
+.Switch {
+  top: 0;
+  left: 0;
+  height: 100vh;
+}
+
+@supports (height: 100dvh) {
+  .Switch {
+    height: 100dvh;
+  }
+}
+
+.front_text a.text-one,
+.cu_details a.text-one {
+  display: block;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.globe_wrap {
+  flex: none;
+  width: 650px;
+  height: 600px;
+}
+
+/* ===========================================================================
+   SMALL LAPTOPS (1100-1500px). These widths used to be blocked entirely, so
+   the original 1800px-tuned values need a little more room.
+   =========================================================================== */
+@media (min-width: 1100px) and (max-width: 1500px) {
+  .center {
+    width: clamp(540px, 46vw, 770px);
+  }
+
+  .front_text {
+    left: 30px;
+    font-size: clamp(24px, 2.1vw, 35px);
+  }
+
+  #aws-amplify {
+    left: 400%;
+  }
+
+  .skill_img {
+    max-width: 42vw;
+    height: auto;
+  }
+}
+
+/* ===========================================================================
+   TABLET and below  (<= 1099px)
+   =========================================================================== */
+@media (max-width: 1099px) {
+
+  /* --- landing page --- */
+  .logo {
+    left: 24px;
+    width: 120px;
+  }
+
+  /* --- main hero --- */
+  .main-logo {
+    width: 96px;
+    margin-left: 0;
+    left: 20px;
+    top: 16px;
+  }
+
+  .Switch .Toggle {
+    top: 10px;
+    right: 10px;
+    transform: scale(0.65);
+    transform-origin: top right;
+  }
+
+  .img_body {
+    flex-direction: column;
+    justify-content: center;
+    height: auto;
+    min-height: 100vh;
+    min-height: 100svh;
+    margin-bottom: 0;
+    padding: 110px 24px 120px;
+    gap: 32px;
+  }
+
+  .center {
+    --cw: min(70vw, 400px);
+    --ch: calc(var(--cw) * 0.875);
+    width: 100%;
+    max-width: 640px;
+    padding: 0;
+    border-top-left-radius: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+  }
+
+  .center {
+    /* the 3D photo cube projects wider than its box; keep that off the page edge */
+    overflow-x: clip;
+  }
+
+  .center .img-card {
+    margin: 0 auto;
+    order: 1;
+  }
+
+  .center .img-card img {
+    left: 0;
+    top: 0;
+  }
+
+  .center .sliders {
+    order: 2;
+  }
+
+  .sliders {
+    position: static;
+    display: flex;
+    gap: 8px;
+  }
+
+  .sliders label {
+    width: 72px;
+    height: 64px;
+    margin: 0;
+  }
+
+  .front_text {
+    /* must stay positioned: it paints above the fixed theme background layer */
+    position: relative;
+    left: 0;
+    top: 0;
+    font-size: 1rem;
+    max-width: 640px;
+  }
+
+  .front_text h1 {
+    font-size: clamp(2rem, 6.2vw, 3.2rem);
+    line-height: 1.1;
+  }
+
+  .front_text .tagline {
+    margin: 14px 0 18px;
+    font-size: clamp(1rem, 2.6vw, 1.3rem);
+    font-weight: 500;
+  }
+
+  .front_btns {
+    height: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .download_btn {
+    font-size: 1rem;
+    padding: 0.85rem 1.3rem;
+  }
+
+  .share_btn {
+    margin-top: 0;
+  }
+
+  .view-modal {
+    margin-left: 0;
+    padding: 0.8rem 1.3rem;
+    font-size: 1rem;
+  }
+
+  /* share dialog becomes a centred modal */
+  .popup-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+  }
+
+  .popup,
+  .popup.show {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: min(92vw, 380px);
+    z-index: 10001;
+  }
+
+  /* touch layouts are obviously scrollable and the dock is right there */
+  .scrolldown {
+    display: none;
+  }
+
+  /* --- journey timeline: one column along the left --- */
+  .wrapper {
+    padding: 0 16px;
+    margin: 30px auto;
+  }
+
+  .wrapper .center-line {
+    left: 46px;
+  }
+
+  .wrapper .row,
+  .wrapper .row-1,
+  .wrapper .row-2 {
+    justify-content: flex-end;
+  }
+
+  .wrapper .row section {
+    width: calc(100% - 70px);
+    margin-bottom: 4px;
+  }
+
+  .row-1 section::before {
+    right: auto;
+    left: -7px;
+  }
+
+  .row-1 section .timeline_icon {
+    right: auto;
+    left: -60px;
+  }
+
+  .row section .details .title {
+    font-size: 19px;
+  }
+
+  /* --- skills: stacked, bubbles become a tidy chip row --- */
+  #skills {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #skills>center {
+    order: 1;
+  }
+
+  #skills .skill_body {
+    order: 2;
+  }
+
+  #skills .skills_bubble {
+    order: 3;
+  }
+
+  .skill_body {
+    flex-direction: column;
+    padding: 0 16px;
+    gap: 24px;
+  }
+
+  .skill-bars {
+    width: 100%;
+    max-width: 640px;
+  }
+
+  .skill_img {
+    position: static;
+    left: auto;
+    width: min(80%, 380px);
+  }
+
+  .skills_bubble {
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin: 28px 16px 0;
+    font: inherit;
+  }
+
+  .skills_bubble p,
+  #linode,
+  #aws,
+  #firebase,
+  #aws-ec2,
+  #aws-amplify,
+  #mern-stack {
+    position: static;
+    top: auto;
+    left: auto;
+    animation: none;
+    padding: 14px 18px;
+    font-size: 13px;
+    letter-spacing: 2px;
+    opacity: 1;
+  }
+
+  .skills_bubble p::after {
+    display: none;
+  }
+
+  /* --- projects --- */
+  .project_section {
+    padding: 5px 16px;
+  }
+
+  .project_content {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .project_content .blog-card {
+    grid-column: 1 / -1;
+    width: 100%;
+    max-width: 700px;
+  }
+
+  .project_content .box {
+    width: 100%;
+    max-width: 220px;
+  }
+
+  /* --- contact --- */
+  .cu_body {
+    height: auto;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 16px 24px;
+    gap: 20px;
+  }
+
+  .globe_wrap {
+    width: min(100%, 520px);
+    height: min(82vw, 440px);
+  }
+
+  .cu_container {
+    width: 100%;
+    max-width: 760px;
+    padding: 24px 20px 28px;
+  }
+
+  .cu_container .cu_content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .cu_container .cu_content .left-side {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 0;
+  }
+
+  .cu_content .left-side::before {
+    display: none;
+  }
+
+  .cu_container .cu_content .right-side {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .cu_content .left-side .cu_details {
+    flex: 1 1 200px;
+    margin: 8px;
+  }
+}
+
+/* ===========================================================================
+   PHONE  (<= 700px)
+   =========================================================================== */
+@media (max-width: 700px) {
+  .section_heading {
+    font-size: clamp(28px, 8.6vw, 50px);
+    margin: 56px 0;
+  }
+
+  .img_body {
+    padding: 96px 16px 120px;
+  }
+
+  .center {
+    --cw: min(78vw, 340px);
+  }
+
+  .sliders label {
+    width: 58px;
+    height: 52px;
+  }
+
+  .wrapper .center-line {
+    left: 30px;
+  }
+
+  .wrapper .row section {
+    width: calc(100% - 54px);
+    padding: 16px;
+  }
+
+  .row section .timeline_icon,
+  .row-1 section .timeline_icon,
+  .row-2 section .timeline_icon {
+    left: -48px;
+    height: 34px;
+    width: 34px;
+    line-height: 34px;
+    font-size: 14px;
+  }
+
+  .row section .details {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  .skills_bubble p {
+    padding: 10px 14px;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  .project_content {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Touch devices have no hover: show the Code / Demo links directly */
+  .box {
+    max-width: none;
+  }
+
+  .box .front-face {
+    display: none;
+  }
+
+  .box .back-face {
+    position: relative;
+    opacity: 1;
+    transform: none;
+    height: auto;
+    min-height: 84px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    backface-visibility: visible;
+  }
+
+  .box .back-face::before {
+    content: attr(data-label);
+  }
+
+  .box .back-face span {
+    font-size: 16px;
+  }
+
+  .box .back-face a {
+    display: inline-block;
+    padding: 8px 6px;
+    color: #fff;
+  }
+
+  .cu_container {
+    padding: 20px 16px 24px;
+  }
+
+  .cu_content .left-side .cu_details {
+    flex-basis: 100%;
+  }
+
+  /* Dock: compact full-width bar with big tap targets; hides while reading */
+  .dock {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .dock_icons {
+    width: 100%;
+    height: auto;
+    padding: 6px 8px;
+    gap: 0;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 18px 18px 0 0;
+  }
+
+  .dock_item {
+    width: clamp(38px, 10.6vw, 48px);
+  }
+
+  .dock.dock-hidden {
+    transform: translateY(110%);
+  }
+}
+
+/* Short landscape phones: don't make the intro taller than the screen */
+@media (max-height: 520px) and (orientation: landscape) {
+  .hero-layer {
+    top: calc(var(--vh) * 0.36 - (var(--vh) - var(--sh)) / 2);
+  }
+
+  .cta-layer {
+    top: calc(var(--vh) * 0.74 - (var(--vh) - var(--sh)) / 2);
+  }
+
+  .hero-name {
+    font-size: clamp(2rem, 8vh, 4rem);
+  }
+
+  .hero-eyebrow,
+  .hero-typed {
+    display: none;
+  }
+}

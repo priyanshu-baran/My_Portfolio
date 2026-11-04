@@ -185,6 +185,7 @@ export const About = ({ isClicked }) => {
         <div className='center-line'>
           <a
             href='#about'
+            aria-label='Back to the top of My Journey'
             className='scroll-icon'
             style={{
               boxShadow: `${
