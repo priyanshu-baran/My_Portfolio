@@ -6,9 +6,9 @@ import './css/dock.css';
 import './css/home.css';
 import './css/preloader.css';
 import './css/main.css';
-import './css/skills.css';
-import './css/projects.css';
-import './css/about.css';
-import './css/contactUs.css';
+import './css/hero.css';
+import './css/portfolio.css';
+import './css/responsive.css';
+import './css/a11y.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(<App />);

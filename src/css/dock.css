@@ -1,17 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;800&display=swap");
-
 * {
   margin: 0;
   padding: 0;
   border: none;
-  cursor: none;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
 
-html {
-  scroll-behavior: smooth;
-}
 
 .dock {
   width: 100%;

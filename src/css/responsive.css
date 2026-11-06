@@ -1,0 +1,131 @@
+/* ===========================================================================
+   Dock + landing page responsiveness.
+   (The main page's own breakpoints live in portfolio.css.)
+   =========================================================================== */
+
+/* ---------- Dock: semantic list + labels (all sizes) ---------- */
+.dock {
+  transition: transform 0.35s ease;
+  pointer-events: none;
+}
+
+.dock_icons {
+  list-style: none;
+  pointer-events: auto;
+}
+
+.dock_li {
+  display: flex;
+  align-items: flex-end;
+}
+
+.dock_item {
+  display: block;
+  position: relative;
+  flex: none;
+  width: 60px;
+  border-radius: 14px;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dock_item .icon {
+  display: block;
+  width: 100%;
+}
+
+.dock_item.is-current::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -3px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ff3466;
+  transform: translateX(-50%);
+}
+
+@media (hover: hover) {
+  .dock_item::after {
+    content: attr(data-label);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translate(-50%, 4px);
+    padding: 4px 10px;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.82);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+
+  .dock_item:hover::after,
+  .dock_item:focus-visible::after {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+/* Room at the end of the page so the dock never sits on top of content */
+.dock-spacer {
+  height: calc(var(--dock-h, 70px) + env(safe-area-inset-bottom, 0px) + 16px);
+}
+
+/* ---------- Landing page ---------- */
+@media (max-width: 1099px) {
+  .logo {
+    left: 24px;
+    width: 120px;
+  }
+}
+
+/* ---------- Phones: compact full-width dock that hides while reading ---------- */
+@media (max-width: 700px) {
+  .dock {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .dock_icons {
+    width: 100%;
+    height: auto;
+    padding: 6px 8px;
+    gap: 0;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 18px 18px 0 0;
+  }
+
+  .dock_item {
+    width: clamp(38px, 10.6vw, 48px);
+  }
+
+  .dock.dock-hidden {
+    transform: translateY(110%);
+  }
+}
+
+/* Short landscape phones: don't make the intro taller than the screen */
+@media (max-height: 520px) and (orientation: landscape) {
+  .hero-layer {
+    top: calc(var(--vh) * 0.36 - (var(--vh) - var(--sh)) / 2);
+  }
+
+  .cta-layer {
+    top: calc(var(--vh) * 0.74 - (var(--vh) - var(--sh)) / 2);
+  }
+
+  .hero-name {
+    font-size: clamp(2rem, 8vh, 4rem);
+  }
+
+  .hero-eyebrow,
+  .hero-typed {
+    display: none;
+  }
+}

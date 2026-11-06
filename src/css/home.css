@@ -18,18 +18,43 @@
   left: 0;
 }
 
-main {
+main.scene {
+  --vh: 100vh;
+  /* "cover" stage: the 16:9 scene always fills the screen, any aspect ratio */
+  --sw: max(100vw, calc(var(--vh) * 16 / 9));
+  --sh: calc(var(--sw) * 9 / 16);
   position: relative;
   background-color: #353;
-  height: 100vh;
+  height: var(--vh);
   width: 100vw;
   overflow: hidden;
 }
 
-.parallax {
+@supports (height: 100svh) {
+  main.scene {
+    --vh: 100svh;
+  }
+}
+
+.stage {
+  position: absolute;
+  width: var(--sw);
+  height: var(--sh);
+  left: calc((100vw - var(--sw)) / 2);
+  top: calc((var(--vh) - var(--sh)) / 2);
+}
+
+.layer {
   position: absolute;
   pointer-events: none;
-  transition: 0.45s cubic-bezier(0.2, 0.49, 0.32, 0.99);
+  /* centred on its (left, top) point via GSAP xPercent/yPercent (see Home.js) */
+}
+
+.layer img {
+  display: block;
+  width: 100%;
+  height: auto;
+  will-change: transform;
 }
 
 .bg-img {
@@ -88,48 +113,6 @@ main {
   left: 65.88%;
 }
 
-.text {
-  z-index: 9;
-  top: 33%;
-  left: 50%;
-  width: 100%;
-  text-align: center;
-  color: white;
-  text-transform: uppercase;
-  pointer-events: auto;
-  user-select: none;
-}
-
-.text h2 {
-  font-weight: 500;
-  font-size: 6rem;
-  line-height: 0.88;
-  color: transparent;
-  background-image: linear-gradient(#FFC107, #9C27B0);
-  -webkit-background-clip: text;
-  background-clip: text;
-}
-
-.text h1 {
-  font-weight: 600;
-  font-size: 5.25rem;
-  line-height: 0.88;
-  color: transparent;
-  background-image: linear-gradient(#F44336, #FFEB3B);
-  -webkit-background-clip: text;
-  background-clip: text;
-}
-
-.text h3 {
-  font-weight: 600;
-  font-size: 3.5rem;
-  line-height: 0.88;
-  color: transparent;
-  background-image: linear-gradient(#FFEB3B, #F44336);
-  -webkit-background-clip: text;
-  background-clip: text;
-}
-
 .mountain-6 {
   z-index: 10;
   width: 21.25%;
@@ -141,7 +124,7 @@ main {
   z-index: 11;
   width: 30.73%;
   top: 74.505%;
-  left: 46.875;
+  left: 0; /* original value was "46.875" (no unit, ignored by browsers); kept the rendered result */
 }
 
 .mountain-5 {
@@ -284,20 +267,3 @@ main {
   transform: scale(0.95);
 }
 
-@media (max-width:1800px) {
-  .text h2 {
-    font-size: 5.5rem;
-  }
-
-  .text h1 {
-    font-size: 4.75rem;
-  }
-
-  .text h3 {
-    font-size: 3rem;
-  }
-
-  .cssbuttons-io-button {
-    top: 20px;
-  }
-}

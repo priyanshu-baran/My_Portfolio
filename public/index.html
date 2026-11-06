@@ -3,41 +3,102 @@
 
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#000000" />
-  <meta name="description" content="Web site created using create-react-app" />
-  <title>My Web-folio</title>
-  <link rel="shortcut icon" href="img/logo_dark.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#05abe0" />
+  <meta name="color-scheme" content="light dark" />
+  <title>Priyanshu Baran | Full-Stack Developer Portfolio</title>
+  <meta name="description"
+    content="Portfolio of Priyanshu Baran, a full-stack developer (Java, Spring Boot, React, Node.js, AWS) and M.Tech CSE student at VNIT. Projects, journey, skills and contact." />
+  <link rel="canonical" href="https://my-webfolio.netlify.app/" />
+
+  <!-- Social share preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Priyanshu Baran | Full-Stack Developer" />
+  <meta property="og:description"
+    content="Java, Spring Boot, React, Node.js and AWS projects, plus my journey so far." />
+  <meta property="og:url" content="https://my-webfolio.netlify.app/" />
+  <meta property="og:image" content="https://my-webfolio.netlify.app/img/og-preview.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="%PUBLIC_URL%/img/logo_dark.png" />
+
+  <!-- Start fetching the landing images before the JS bundle arrives -->
+  <script src="%PUBLIC_URL%/preload.js"></script>
+
+  <!-- One font request (was 3 chained @imports) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Quattrocento+Sans&display=swap" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
+
   <style>
-    #mobileMessage {
-      display: none;
+    /* Stops the white flash between the loader and the first paint */
+    html,
+    body {
+      background: #0d1b24;
+      margin: 0;
     }
 
-    @media only screen and (max-width: 1500px) {
-      #mobileMessage {
-        display: block;
-        text-align: center;
-        padding: 20px;
-        background-color: #f44336;
-        color: #fff;
-      }
+    html[data-theme="day"] body {
+      background: #05abe0;
+    }
 
-      #root {
-        display: none;
-      }
+    /* Boot loader (same look/position as the React <Preloader>). */
+    .boot {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      background: radial-gradient(circle farthest-corner at center, #3c4b57 0%, #1c262b 100%);
+    }
+
+    .boot::before {
+      content: '';
+      position: absolute;
+      inset: -6%;
+      background: url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAA0JCgsKCA0LCgsODg0PEyAVExISEyccHhcgLikxMC4pLSwzOko+MzZGNywtQFdBRkxOUlNSMj5aYVpQYEpRUk//2wBDAQ4ODhMREyYVFSZPNS01T09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0//wAARCAAbADADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDbsdWiv7LzBKIQjAHcfX/6/FTXWvC3szNbIbhs7VwvBPr9K8+0+RgBErna2MjHWtgWqQ6e95d3DRhHCRqp5PpgVTTtocaVnqbA8Uao+1RbxgseGMTYx6YrStvEBmQB423qPmIQhc1yOmWF1c6mA9w/kup25cnj8OKv6nbT6YoYnJbpyTwPxqGpGtkupv3fiVbXywttLMzHnHyhR7k9/aqN54rumw9uscKDghhvYmsGyujd27sflA656AVm3c22VoY3JQY596agvtGcnNaRY62KIiBOoO7J/LFWb5UvooY3GNrFxj1IA/pVS0AyvHarenfPcuH5wTiqKS1NrSkEdq20bMZ2kc4qnqd6/wBglBZZG+nvUqyOkbhGxyelZs/zwurcgkZ/OgbQaXcbbB42TAbJwf6VnbVEmCnB9avzIsSN5Yx8h/8AQqjt0V1TcoOcA007iloz/9k=) center / cover;
+      filter: blur(22px) saturate(1.15);
+      opacity: 0.5;
+    }
+
+    .boot-ring {
+      position: absolute;
+      top: calc(50% - 120px);
+      left: calc(50% - 32px);
+      width: 64px;
+      height: 64px;
+      box-sizing: border-box;
+      border-radius: 50%;
+      border: 3px solid rgba(239, 239, 250, 0.2);
+      border-top-color: #efeffa;
+      animation: bootspin 1s linear infinite;
+    }
+
+    @keyframes bootspin {
+      to { transform: rotate(360deg); }
     }
   </style>
+  <script>
+    // Apply the saved/system theme before React mounts, so there is no flash.
+    (function () {
+      try {
+        var s = localStorage.getItem('theme');
+        var night = s ? s === 'night' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-theme', night ? 'night' : 'day');
+      } catch (e) { document.documentElement.setAttribute('data-theme', 'day'); }
+    })();
+  </script>
 </head>
 
 <body>
-  <noscript>You need to enable JavaScript to run this app.</noscript>
-  <div id="mobileMessage">Kindly open this website on a desktop or laptop for a better user experience, since it is
-    currently not responsive for mobile devices. <br /><br /><br /> Also don't try to access this page on mobile by
-    enabling desktop site option on the browser.</div>
-  <div id="root"></div>
+  <noscript>This portfolio needs JavaScript. You can reach me at baranpriyanshu3@gmail.com or
+    github.com/priyanshu-baran.</noscript>
+  <!-- Instant loader: painted from the HTML alone, replaced as soon as React mounts -->
+  <div id="root">
+    <div class="boot" role="status" aria-label="Loading"><span class="boot-ring"></span></div>
+  </div>
 </body>
 
 </html>
