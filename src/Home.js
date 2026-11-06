@@ -3,7 +3,17 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Preloader } from './Preloader';
-import { preloadImages, usePrefersReducedMotion } from './hooks';
+import { usePrefersReducedMotion } from './hooks';
+import {
+  detectFormat,
+  imageUrl,
+  isSmallScreen,
+  loadImage,
+  prefetchMainPage,
+  STATIC,
+  TIER1,
+  TIER2,
+} from './landingAssets';
 
 /**
  * Parallax layers, back to front. Values are the originals:
@@ -11,6 +21,7 @@ import { preloadImages, usePrefersReducedMotion } from './hooks';
  * `null` marks where the hero text sits in the stack (between the far and
  * near mountains, as in the original design).
  */
+// (image names are loaded in tiers, see landingAssets.js)
 const LAYERS = [
   ['background', 'bg-img', 0.3, 0.38, 0, 0, -200],
   ['fog_7', 'fog-7', 0.27, 0.32, 0, 0, 850],
@@ -32,7 +43,6 @@ const LAYERS = [
   ['mountain_1', 'mountain-1', 0.027, 0.018, 0.53, 0.2, 4000],
   ['fog_1', 'fog-1', 0.12, 0.01, 0, 0, 4200],
 ];
-const STATIC_IMAGES = ['sun_rays', 'black_shadow'];
 
 const ROLES = [
   'Java · Spring Boot · React · Node.js',
@@ -40,13 +50,9 @@ const ROLES = [
   'M.Tech CSE student at VNIT',
 ];
 
-const isSmallScreen = () =>
-  typeof window !== 'undefined' &&
-  window.matchMedia('(max-width: 800px)').matches;
-
-const Picture = ({ name, small, ...rest }) => (
+const Picture = ({ name, small, format, ...rest }) => (
   <img
-    src={`img/${name}${small ? '-sm' : ''}.webp`}
+    src={imageUrl(name, small, format)}
     alt=''
     decoding='async'
     draggable='false'
@@ -99,26 +105,56 @@ export const Home = () => {
   const navigate = useNavigate();
   const reduce = usePrefersReducedMotion();
   const small = useRef(isSmallScreen()).current;
+  const [format, setFormat] = useState(null);
+  const [progress, setProgress] = useState(0);
   const [ready, setReady] = useState(false);
   const stageRef = useRef(null);
+  // name -> Promise<boolean>; `done` flags let the intro know what is already loaded
+  const assets = useRef({ promises: {}, done: {} }).current;
 
-  // Real loading: wait for the scene's images (max 4.5 s), not a fixed timer.
+  /**
+   * Loading strategy:
+   *  1. TIER1 (back layers, small) starts at once, ideally already fetched by
+   *     public/preload.js while the JS bundle was downloading.
+   *  2. The intro starts as soon as TIER1 is in (max 6 s), not when everything is.
+   *  3. TIER2 (near layers) follows immediately and each layer rises into place
+   *     the moment it arrives.
+   */
   useEffect(() => {
     let alive = true;
-    const urls = [
-      ...LAYERS.filter(Boolean).map((l) => l[0]),
-      ...STATIC_IMAGES,
-    ].map((n) => `img/${n}${small ? '-sm' : ''}.webp`);
-    const started = performance.now();
-    preloadImages(urls).then(() => {
-      // keep the loader up for at least a beat so it doesn't just flash
-      const wait = Math.max(0, 600 - (performance.now() - started));
-      setTimeout(() => alive && setReady(true), wait);
-    });
+    (async () => {
+      const fmt = await detectFormat();
+      if (!alive) return;
+      setFormat(fmt);
+      const start = (name) => {
+        const p = loadImage(imageUrl(name, small, fmt)).then((ok) => {
+          assets.done[name] = true;
+          return ok;
+        });
+        assets.promises[name] = p;
+        return p;
+      };
+      const t0 = performance.now();
+      const tier1 = TIER1.map((name) => {
+        const p = start(name);
+        p.then(() => alive && setProgress((v) => v + 1 / TIER1.length));
+        return p;
+      });
+      await Promise.race([
+        Promise.all(tier1),
+        new Promise((r) => setTimeout(r, 6000)),
+      ]);
+      [...TIER2, ...STATIC].forEach(start);
+      // keep the loader up a beat so it never just flashes
+      await new Promise((r) =>
+        setTimeout(r, Math.max(0, 450 - (performance.now() - t0)))
+      );
+      if (alive) setReady(true);
+    })();
     return () => {
       alive = false;
     };
-  }, [small]);
+  }, [small, assets]);
 
   // Centre every layer on its (left, top) point before the first paint.
   // GSAP's percent-based offsets stay correct whatever the image size.
@@ -137,6 +173,8 @@ export const Home = () => {
     const cleanups = [];
 
     // ---- Entrance animation (skippable by any tap / key) -------------------
+    let alive = true;
+    let skipped = false;
     let tl = null;
     if (!reduce) {
       const k = stage.offsetWidth / 1920;
@@ -150,20 +188,35 @@ export const Home = () => {
             !el.classList.contains('cta-layer')
         )
         .forEach((el) => {
-          const img = el.firstElementChild;
-          const ratio = img.naturalWidth
-            ? img.naturalHeight / img.naturalWidth
-            : 1;
-          const height = el.offsetHeight || el.offsetWidth * ratio;
-          tl.from(
-            el,
-            {
-              y: height / 2 + Number(el.dataset.distance) * k,
-              duration: 2.2,
-              ease: 'power3.out',
-            },
-            0.2
-          );
+          const name = el.dataset.name;
+          const startY = () => {
+            const img = el.querySelector('img');
+            const ratio = img.naturalWidth
+              ? img.naturalHeight / img.naturalWidth
+              : 1;
+            const height = el.offsetHeight || el.offsetWidth * ratio;
+            return height / 2 + Number(el.dataset.distance) * k;
+          };
+          if (assets.done[name]) {
+            tl.from(
+              el,
+              { y: startY(), duration: 2.2, ease: 'power3.out' },
+              0.2
+            );
+          } else {
+            // Not downloaded yet: hidden now, rises in when it arrives.
+            gsap.set(el, { autoAlpha: 0 });
+            assets.promises[name].then(() => {
+              if (!alive) return;
+              if (skipped) gsap.set(el, { autoAlpha: 1 });
+              else
+                gsap.fromTo(
+                  el,
+                  { autoAlpha: 1, y: startY() },
+                  { y: 0, duration: 1.8, ease: 'power3.out' }
+                );
+            });
+          }
         });
       tl.from(
         '.hero-in',
@@ -172,10 +225,14 @@ export const Home = () => {
       );
       tl.from('.hiding', { opacity: 0, duration: 1 }, 1.4);
 
-      const skip = () => tl.timeScale(6);
+      const skip = () => {
+        skipped = true;
+        tl.timeScale(6);
+      };
       window.addEventListener('pointerdown', skip, { once: true });
       window.addEventListener('keydown', skip, { once: true });
       cleanups.push(() => {
+        alive = false;
         window.removeEventListener('pointerdown', skip);
         window.removeEventListener('keydown', skip);
         tl.kill();
@@ -280,9 +337,20 @@ export const Home = () => {
     }
 
     return () => cleanups.forEach((fn) => fn());
-  }, [ready, reduce]);
+  }, [ready, reduce, assets]);
 
-  if (!ready) return <Preloader />;
+  // While the visitor reads the intro, quietly fetch the main page.
+  useEffect(() => {
+    if (ready) prefetchMainPage();
+  }, [ready]);
+
+  if (!ready)
+    return (
+      <Preloader
+        preview
+        progress={progress}
+      />
+    );
 
   return (
     <div className='home_body'>
@@ -305,6 +373,7 @@ export const Home = () => {
               <div
                 key={layer[0]}
                 className={`layer ${layer[1]}`}
+                data-name={layer[0]}
                 data-speedx={layer[2]}
                 data-speedy={layer[3]}
                 data-speedz={layer[4]}
@@ -313,6 +382,7 @@ export const Home = () => {
                 <Picture
                   name={layer[0]}
                   small={small}
+                  format={format}
                 />
               </div>
             ) : (
@@ -380,23 +450,19 @@ export const Home = () => {
                         </svg>
                       </div>
                     </button>
-                    <a
-                      className='ghost-btn'
-                      href='/My_CV.pdf'
-                      download='Priyanshu_Baran_CV.pdf'>
-                      Download CV
-                    </a>
                   </div>
             </div>
           </div>
           <Picture
             name='sun_rays'
             small={small}
+            format={format}
             className='sun-rays hiding'
           />
           <Picture
             name='black_shadow'
             small={small}
+            format={format}
             className='black-shadow hiding'
           />
         </div>

@@ -1,3 +1,9 @@
+[[headers]]
+  for = "/img/*"
+  [headers.values]
+    # Images are not fingerprinted: if you replace one, give the new file a new name.
+    Cache-Control = "public, max-age=2592000, stale-while-revalidate=604800"
+
 [[redirects]]
   from="/*"
   to="/index.html"

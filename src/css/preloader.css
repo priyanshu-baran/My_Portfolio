@@ -162,3 +162,56 @@
     filter: blur(4px);
   }
 }
+/* Landing-page loader: blurred scene preview + real progress bar */
+.pre_body {
+  position: relative;
+  overflow: hidden;
+}
+
+.pre_preview {
+  position: absolute;
+  inset: -6%;
+  background-size: cover;
+  background-position: center;
+  filter: blur(22px) saturate(1.15);
+  opacity: 0.5;
+  animation: preFade 0.8s ease both;
+}
+
+.pre_body.has-preview::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(13, 27, 36, 0.15), rgba(13, 27, 36, 0.7));
+}
+
+.pre_body .loader,
+.pre_body .loading {
+  z-index: 2;
+}
+
+.pre_progress {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: calc(50% + 70px);
+  width: min(220px, 60vw);
+  height: 3px;
+  margin-left: calc(min(220px, 60vw) / -2);
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.18);
+  overflow: hidden;
+}
+
+.pre_progress span {
+  display: block;
+  height: 100%;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #ffc107, #ff7043);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+
+@keyframes preFade {
+  from { opacity: 0; }
+}
