@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { images } from './icons';
 import { useFinePointer, usePrefersReducedMotion } from './hooks';
+import { profile } from './data/portfolio';
 
 /** Smooth-scroll to a section of the main page without reloading it. */
 export const scrollToSection = (id, reduce) => {
@@ -26,21 +27,9 @@ const ITEMS = [
   { label: 'Skills', type: 'section', id: 'skills' },
   { label: 'My Work', type: 'section', id: 'projects' },
   { label: 'Contact', type: 'section', id: 'contact' },
-  {
-    label: 'LinkedIn',
-    type: 'external',
-    href: 'https://www.linkedin.com/in/priyanshu-baran/',
-  },
-  {
-    label: 'GitHub',
-    type: 'external',
-    href: 'https://github.com/priyanshu-baran',
-  },
-  {
-    label: 'Twitter',
-    type: 'external',
-    href: 'https://twitter.com/Priyanshu_Baran',
-  },
+  { label: 'LinkedIn', type: 'external', href: profile.links.linkedin },
+  { label: 'GitHub', type: 'external', href: profile.links.github },
+  { label: 'Twitter', type: 'external', href: profile.links.twitter },
 ];
 
 export const Dock = ({ isClicked }) => {

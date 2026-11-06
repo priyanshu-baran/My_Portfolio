@@ -21,3 +21,26 @@ Branch: `feature/responsive-overhaul`
 - `public/img/og-preview.jpg` is the link-preview image; replace with a nicer one any time.
 - The "Rocher" colour font is still hot-linked from codepen (as before). Consider self-hosting it.
 - Tooling (Create React App) was intentionally not migrated in this branch.
+
+---
+
+## Update 2: main-page redesign + faster landing load
+
+### Editing your content (no code changes needed)
+Everything on the main page comes from **`src/data/portfolio.js`**: profile, journey, skill groups, projects, contact. The file starts with a "how to add things" guide:
+- new skill: add `{ name: 'Docker' }` to a group's `skills`
+- new project: copy a block in `projects` (newest first; leave out links you do not have)
+- new journey item: copy a block in `journey` (`type`: education | school | achievement | work | project)
+Images go in `public/img` and are referred to as `/img/<name>`. If you replace an image, give it a new name (browsers cache `/img/*` for 30 days, see `netlify.toml`).
+
+### Main page structure
+`src/Main.js` (shell, theme toggle, share/download) -> `src/sections/{Hero,Journey,Skills,Projects,Contact}.js`.
+Styles: `src/css/portfolio.css` (colour tokens for day/night live at the top).
+
+### Landing-page loading
+1. `public/index.html` paints an instant loader from HTML alone (no JS needed).
+2. `public/preload.js` starts fetching the back scene layers while the JS bundle downloads.
+3. Scene images are AVIF (WebP fallback): about 1.2 MB desktop / 1.0 MB phone (was ~5 MB).
+4. The intro starts when the small "tier 1" layers are in; near layers (tier 2) arrive afterwards and rise into place one by one.
+5. While the intro plays, the main page code and its first images are prefetched, so Explore feels instant.
+Tier lists live in `src/landingAssets.js` (keep in sync with `public/preload.js`).
