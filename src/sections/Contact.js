@@ -31,7 +31,7 @@ export const Contact = ({ night }) => {
           ['red', 'white', 'blue', 'green'][Math.round(Math.random() * 3)],
         ],
       })),
-    []
+    [],
   );
 
   useEffect(() => {
@@ -103,7 +103,9 @@ export const Contact = ({ night }) => {
                     arcColor={'color'}
                     arcDashLength={() => Math.random()}
                     arcDashGap={() => Math.random()}
-                    arcDashAnimateTime={() => (reduce ? 0 : Math.random() * 4000 + 500)}
+                    arcDashAnimateTime={() =>
+                      reduce ? 0 : Math.random() * 4000 + 500
+                    }
                   />
                 </Suspense>
               )}
@@ -140,7 +142,9 @@ export const Contact = ({ night }) => {
                   </span>
                   <div>
                     <span className='label'>Phone</span>
-                    <a href={`tel:${contact.phone.replace(/\s/g, '')}`}>{contact.phone}</a>
+                    <a href={`tel:${contact.phone.replace(/\s/g, '')}`}>
+                      {contact.phone}
+                    </a>
                   </div>
                 </li>
               )}

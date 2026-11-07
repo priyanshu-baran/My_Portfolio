@@ -9,10 +9,20 @@ const container = {
 };
 const item = {
   hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 0.61, 0.36, 1] } },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.22, 0.61, 0.36, 1] },
+  },
 };
 
-export const Hero = ({ onDownload, isDownloading, onShare, shareBtnRef, shareOpen }) => {
+export const Hero = ({
+  onDownload,
+  isDownloading,
+  onShare,
+  shareBtnRef,
+  shareOpen,
+}) => {
   const tilt = useTilt(7);
   const technologies = skillGroups.reduce((n, g) => n + g.skills.length, 0);
   const stats = [
@@ -90,7 +100,9 @@ export const Hero = ({ onDownload, isDownloading, onShare, shareBtnRef, shareOpe
               <i
                 className='fa-solid fa-share-nodes'
                 aria-hidden='true'></i>
-              <span>Share<span className='hide-sm'> My Webfolio</span></span>
+              <span>
+                Share<span className='hide-sm'> My Webfolio</span>
+              </span>
             </button>
             <a
               className='btn-icon'
@@ -138,7 +150,11 @@ export const Hero = ({ onDownload, isDownloading, onShare, shareBtnRef, shareOpe
           className='hero-visual'
           initial={{ opacity: 0, scale: 0.94 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 0.61, 0.36, 1] }}>
+          transition={{
+            duration: 0.8,
+            delay: 0.2,
+            ease: [0.22, 0.61, 0.36, 1],
+          }}>
           <div
             className='portrait'
             {...tilt}>

@@ -7,12 +7,13 @@ import { profile, projects } from './data/portfolio';
 
 /** Called from the landing page while the visitor reads the intro. */
 export const warmAssets = () => {
-  [`${profile.photo}.webp`, ...projects.slice(0, 2).map((p) => p.image)].forEach(
-    (src) => {
-      const img = new Image();
-      img.src = src;
-    }
-  );
+  [
+    `${profile.photo}.webp`,
+    ...projects.slice(0, 2).map((p) => p.image),
+  ].forEach((src) => {
+    const img = new Image();
+    img.src = src;
+  });
 };
 
 const MainPage = ({ isClicked, toggleTheme }) => (

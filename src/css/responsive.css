@@ -62,7 +62,9 @@
     white-space: nowrap;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.15s ease, transform 0.15s ease;
+    transition:
+      opacity 0.15s ease,
+      transform 0.15s ease;
   }
 
   .dock_item:hover::after,
@@ -75,6 +77,12 @@
 /* Room at the end of the page so the dock never sits on top of content */
 .dock-spacer {
   height: calc(var(--dock-h, 70px) + env(safe-area-inset-bottom, 0px) + 16px);
+}
+
+@media (max-width: 1500px) {
+  .page .main-logo {
+    position: absolute;
+  }
 }
 
 /* ---------- Landing page ---------- */

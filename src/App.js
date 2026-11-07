@@ -82,7 +82,7 @@ const App = () => {
       root.style.setProperty('--vt-y', `${y}px`);
       root.style.setProperty(
         '--vt-r',
-        `${Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y))}px`
+        `${Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y))}px`,
       );
       root.classList.add('vt-active');
       const t = document.startViewTransition(() => {
@@ -90,7 +90,7 @@ const App = () => {
       });
       t.finished.finally(() => root.classList.remove('vt-active'));
     },
-    [isClicked, reduceMotion]
+    [isClicked, reduceMotion],
   );
 
   return (

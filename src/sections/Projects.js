@@ -141,7 +141,9 @@ export const Projects = () => {
               className='btn btn-secondary'
               aria-expanded={showAll}
               onClick={() => setShowAll((v) => !v)}>
-              {showAll ? 'Show fewer projects' : `Show all ${projects.length} projects`}
+              {showAll
+                ? 'Show fewer projects'
+                : `Show all ${projects.length} projects`}
             </button>
           </div>
         )}

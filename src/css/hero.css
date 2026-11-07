@@ -23,8 +23,12 @@
 }
 
 @media (max-height: 700px) {
-  .hero-layer { top: calc(var(--vh) * 0.35 - (var(--vh) - var(--sh)) / 2); }
-  .cta-layer { top: calc(var(--vh) * 0.64 - (var(--vh) - var(--sh)) / 2); }
+  .hero-layer {
+    top: calc(var(--vh) * 0.35 - (var(--vh) - var(--sh)) / 2);
+  }
+  .cta-layer {
+    top: calc(var(--vh) * 0.64 - (var(--vh) - var(--sh)) / 2);
+  }
 }
 
 .hero {
@@ -45,7 +49,12 @@
   position: absolute;
   inset: -35% -12%;
   z-index: -1;
-  background: radial-gradient(closest-side, rgba(7, 26, 24, 0.58), rgba(7, 26, 24, 0.28) 55%, transparent);
+  background: radial-gradient(
+    closest-side,
+    rgba(7, 26, 24, 0.58),
+    rgba(7, 26, 24, 0.28) 55%,
+    transparent
+  );
   filter: blur(14px);
   pointer-events: none;
 }
@@ -76,8 +85,12 @@
 }
 
 @keyframes heroPulse {
-  70% { box-shadow: 0 0 0 0.6em rgba(255, 193, 7, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0); }
+  70% {
+    box-shadow: 0 0 0 0.6em rgba(255, 193, 7, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 193, 7, 0);
+  }
 }
 
 .hero-name {
@@ -87,7 +100,12 @@
   line-height: 1.02;
   letter-spacing: -0.02em;
   color: transparent;
-  background-image: linear-gradient(180deg, #fff6c8 0%, #ffd23f 42%, #ff7043 100%);
+  background-image: linear-gradient(
+    180deg,
+    #fff6c8 0%,
+    #ffd23f 42%,
+    #ff7043 100%
+  );
   -webkit-background-clip: text;
   background-clip: text;
   filter: drop-shadow(0 6px 22px rgba(0, 0, 0, 0.45));
@@ -138,7 +156,11 @@
   animation: heroCaret 1s step-end infinite;
 }
 
-@keyframes heroCaret { 50% { opacity: 0; } }
+@keyframes heroCaret {
+  50% {
+    opacity: 0;
+  }
+}
 
 .hero-cta {
   display: flex;
@@ -154,7 +176,9 @@
   top: 0;
   left: 0;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
   min-width: 9.5rem;
 }
 
@@ -162,7 +186,6 @@
   transform: translateY(-2px);
   box-shadow: 0 10px 24px rgba(112, 78, 190, 0.45);
 }
-
 
 /* ---- phones ---- */
 @media (max-width: 700px) {
@@ -174,6 +197,11 @@
     line-height: 1;
   }
 
-  .hero-role { letter-spacing: 0.16em; gap: 0.7em; }
-  .hero-role .rule { flex-basis: 1.1rem; }
+  .hero-role {
+    letter-spacing: 0.16em;
+    gap: 0.7em;
+  }
+  .hero-role .rule {
+    flex-basis: 1.1rem;
+  }
 }

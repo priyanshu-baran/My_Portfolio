@@ -67,7 +67,7 @@ const Docks = ({ isClicked }) => {
     const set = () =>
       document.documentElement.style.setProperty(
         '--dock-h',
-        `${el.offsetHeight}px`
+        `${el.offsetHeight}px`,
       );
     set();
     const ro = new ResizeObserver(set);
@@ -83,7 +83,7 @@ const Docks = ({ isClicked }) => {
         entries.forEach((e) => {
           if (e.isIntersecting) setActive(e.target.id);
         }),
-      { rootMargin: '-45% 0px -50% 0px' }
+      { rootMargin: '-45% 0px -50% 0px' },
     );
     ids.forEach((id) => {
       const el = document.getElementById(id);
@@ -205,8 +205,8 @@ const DockItem = ({ item, src, mouseX, magnify, current, onClick }) => {
           item.type === 'home'
             ? '/'
             : item.type === 'section'
-            ? `/main#${item.id}`
-            : item.href
+              ? `/main#${item.id}`
+              : item.href
         }
         target={external ? '_blank' : undefined}
         rel={external ? 'noreferrer noopener' : undefined}

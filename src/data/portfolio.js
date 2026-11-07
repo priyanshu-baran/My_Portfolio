@@ -33,7 +33,7 @@ export const profile = {
   coreStack: 'Java · Spring Boot · React · Node.js',
   resume: { url: '/My_CV.pdf', fileName: 'Priyanshu_Baran_CV.pdf' },
   // Extra numbers shown next to the automatic "projects" and "technologies" counts
-  highlights: [{ value: 8.17, decimals: 2, label: 'M.Tech CGPA (ongoing)' }],
+  highlights: [{ value: 8.43, decimals: 2, label: 'M.Tech CGPA (ongoing)' }],
   links: {
     github: 'https://github.com/priyanshu-baran',
     linkedin: 'https://www.linkedin.com/in/priyanshu-baran/',
@@ -54,7 +54,7 @@ export const journey = [
     org: 'Visvesvaraya National Institute of Technology (VNIT)',
     period: '2025 – 2027',
     description: 'Pursuing my Master’s in Computer Science Engineering.',
-    highlight: '8.17 CGPA (ongoing)',
+    highlight: '8.43 CGPA (ongoing)',
   },
   {
     type: 'education',
@@ -126,18 +126,16 @@ export const skillGroups = [
   {
     title: 'Databases',
     icon: 'fa-database',
-    skills: [{ name: 'MongoDB' }, { name: 'MySQL' }],
+    skills: [{ name: 'MongoDB Atlas' }, { name: 'MySQL' }],
   },
   {
     title: 'Cloud & Services',
     icon: 'fa-cloud',
     skills: [
       { name: 'AWS' },
-      { name: 'AWS EC2' },
       { name: 'AWS Amplify' },
       { name: 'AWS Cognito' },
       { name: 'Firebase' },
-      { name: 'Linode' },
     ],
   },
   // Example: a "Core CS" group is a common thing recruiters look for.
@@ -156,7 +154,7 @@ export const projects = [
     image: '/img/project_4.jpeg',
     description:
       'An e-learning platform where users log in and pick courses from a catalogue of their choice. Users can attempt a free quiz and then buy a course according to their requirement.',
-    tech: ['React', 'AWS'],
+    tech: ['React', 'AWS', 'MongoDB', 'Node.js'],
     links: {
       code: 'https://github.com/priyanshu-baran/E-Learning_Website',
       demo: 'https://connect-learn-frontend.netlify.app/',
@@ -167,12 +165,17 @@ export const projects = [
     },
   },
   {
-    title: 'Real-Time Chat Application',
+    title: 'Real-Time Chat Application (QuickChat)',
     period: 'Jun 2023 – Jul 2023',
     image: '/img/project_3.jpeg',
     description:
       'Built to get hands-on with WebSockets and real-time data transfer. I used a pre-made Tailwind template so I could focus mostly on the backend.',
-    tech: ['Node.js', 'Socket.IO', 'Tailwind CSS'],
+    tech: [
+      'Node.js',
+      'Socket.IO',
+      'Tailwind CSS',
+      'Firebase Realtime Database',
+    ],
     links: {
       code: 'https://github.com/priyanshu-baran/Chat_Application',
       demo: 'https://web-based-real-time-chat-app.netlify.app/',
@@ -188,7 +191,7 @@ export const projects = [
     image: '/img/project_2.jpeg',
     description:
       'A voice assistant that can open and close applications, send messages, play songs and show the weather forecast. I am still adding more features to it.',
-    tech: ['Java'],
+    tech: ['Java', 'Desktop GUI'],
     links: {
       code: 'https://github.com/priyanshu-baran/Voice_Assistant_Using_Java',
       video:
@@ -197,20 +200,20 @@ export const projects = [
         'https://github.com/priyanshu-baran/Voice_Assistant_Using_Java/blob/master/README.md',
     },
   },
-  {
-    title: 'Website Boilerplate',
-    period: 'Mar 2023 – Apr 2023',
-    image: '/img/project_1.jpeg',
-    description:
-      'A starter template other websites can use directly, with common pages and features already built: login and signup, home, about, profile, error pages and more.',
-    tech: ['React'],
-    links: {
-      code: 'https://github.com/priyanshu-baran/Boilerplate_For_Websites',
-      demo: 'https://boilerplate-for-websites.netlify.app/',
-      details:
-        'https://github.com/priyanshu-baran/Boilerplate_For_Websites/blob/master/README.md',
-    },
-  },
+  // {
+  //   title: 'Website Boilerplate',
+  //   period: 'Mar 2023 – Apr 2023',
+  //   image: '/img/project_1.jpeg',
+  //   description:
+  //     'A starter template other websites can use directly, with common pages and features already built: login and signup, home, about, profile, error pages and more.',
+  //   tech: ['React'],
+  //   links: {
+  //     code: 'https://github.com/priyanshu-baran/Boilerplate_For_Websites',
+  //     demo: 'https://boilerplate-for-websites.netlify.app/',
+  //     details:
+  //       'https://github.com/priyanshu-baran/Boilerplate_For_Websites/blob/master/README.md',
+  //   },
+  // },
   // Hidden project from your old file:
   // {
   //   title: 'Digital Adda Website',
@@ -229,6 +232,4 @@ export const contact = {
   showPhone: true,
   phone: '+91 6265788336',
   location: 'Varanasi, Uttar Pradesh',
-  // Your old page also listed: elitecoder.coregamer1803@gmail.com
-  // (left out because a professional address reads better to recruiters)
 };

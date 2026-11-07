@@ -60,7 +60,7 @@ export const loadImage = (url) =>
     img.onload = () => {
       (img.decode ? img.decode() : Promise.resolve()).then(
         () => resolve(true),
-        () => resolve(true)
+        () => resolve(true),
       );
     };
     img.onerror = () => resolve(false);

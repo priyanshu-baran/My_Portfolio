@@ -8,8 +8,11 @@
 }
 
 :root {
-  --font-sans: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace;
+  --font-sans:
+    'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono:
+    ui-monospace, 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono',
+    monospace;
   --accent: #6d5efc;
   --accent-2: #ff7a45;
   --radius: 20px;
@@ -104,8 +107,9 @@ html[data-theme='night'] {
 
 .page .main-logo {
   top: 18px;
-  left: clamp(16px, 5vw, 72px);
-  width: clamp(84px, 9vw, 130px);
+  position: fixed;
+  left: clamp(16px, 5vw, 18px);
+  width: clamp(84px, 12vw, 200px);
   margin: 0;
 }
 
@@ -137,7 +141,10 @@ html[data-theme='night'] {
   font: 600 1rem var(--font-sans);
   text-decoration: none;
   cursor: pointer;
-  transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease), background-color 0.2s;
+  transition:
+    transform 0.2s var(--ease),
+    box-shadow 0.2s var(--ease),
+    background-color 0.2s;
 }
 
 .btn:hover {
@@ -180,7 +187,9 @@ html[data-theme='night'] {
   border: 1px solid var(--card-border);
   box-shadow: var(--shadow);
   text-decoration: none;
-  transition: transform 0.2s var(--ease), color 0.2s;
+  transition:
+    transform 0.2s var(--ease),
+    color 0.2s;
 }
 
 .btn-icon:hover {
@@ -378,7 +387,13 @@ html[data-theme='night'] {
   position: absolute;
   inset: -6px;
   border-radius: 34px;
-  background: conic-gradient(from var(--ring-angle), #6d5efc, #ff7a45, #ffd23f, #6d5efc);
+  background: conic-gradient(
+    from var(--ring-angle),
+    #6d5efc,
+    #ff7a45,
+    #ffd23f,
+    #6d5efc
+  );
   animation: ringSpin 8s linear infinite;
 }
 
@@ -395,20 +410,37 @@ html[data-theme='night'] {
   animation: floaty 5s ease-in-out infinite;
 }
 
-.float-0 { top: 9%; left: -9%; }
-.float-1 { top: 46%; right: -10%; animation-delay: -1.7s; }
-.float-2 { bottom: 9%; left: -5%; animation-delay: -3.2s; }
+.float-0 {
+  top: 9%;
+  left: -9%;
+}
+.float-1 {
+  top: 46%;
+  right: -10%;
+  animation-delay: -1.7s;
+}
+.float-2 {
+  bottom: 9%;
+  left: -5%;
+  animation-delay: -3.2s;
+}
 
 @keyframes floaty {
-  50% { transform: translateY(-10px); }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 @keyframes ringSpin {
-  to { --ring-angle: 360deg; }
+  to {
+    --ring-angle: 360deg;
+  }
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* ---------- Section headers ---------- */
@@ -463,8 +495,12 @@ html[data-theme='night'] {
   box-shadow: var(--shadow);
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
-  transition: translate 0.25s var(--ease), box-shadow 0.25s var(--ease),
-    background-color 0.6s ease, color 0.6s ease, border-color 0.6s ease;
+  transition:
+    translate 0.25s var(--ease),
+    box-shadow 0.25s var(--ease),
+    background-color 0.6s ease,
+    color 0.6s ease,
+    border-color 0.6s ease;
 }
 
 .card h3 {
@@ -503,7 +539,9 @@ html[data-theme='night'] {
   color: var(--text);
   background: var(--chip);
   border: 1px solid var(--chip-border);
-  transition: translate 0.2s, background-color 0.2s;
+  transition:
+    translate 0.2s,
+    background-color 0.2s;
 }
 
 .chip:hover {
@@ -635,9 +673,15 @@ html[data-theme='night'] {
   box-shadow: 0 0 0 6px var(--rule);
 }
 
-.tl-achievement .tl-dot { background: linear-gradient(135deg, #e8531e, #ff8a3d); }
-.tl-school .tl-dot { background: linear-gradient(135deg, #0b8f8e, #14b8a6); }
-.tl-work .tl-dot { background: linear-gradient(135deg, #1d4ed8, #3b82f6); }
+.tl-achievement .tl-dot {
+  background: linear-gradient(135deg, #e8531e, #ff8a3d);
+}
+.tl-school .tl-dot {
+  background: linear-gradient(135deg, #0b8f8e, #14b8a6);
+}
+.tl-work .tl-dot {
+  background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+}
 
 .tl-card {
   padding: clamp(18px, 2.5vw, 26px);
@@ -753,6 +797,7 @@ html[data-theme='night'] {
 
 .proj-desc.is-clamped {
   display: -webkit-box;
+  line-clamp: 3;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
@@ -1045,7 +1090,13 @@ html[data-theme='night'] {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .float-0 { left: -4%; }
-  .float-1 { right: -4%; }
-  .float-2 { left: -2%; }
+  .float-0 {
+    left: -4%;
+  }
+  .float-1 {
+    right: -4%;
+  }
+  .float-2 {
+    left: -2%;
+  }
 }

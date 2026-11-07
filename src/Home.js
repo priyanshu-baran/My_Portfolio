@@ -147,7 +147,7 @@ export const Home = () => {
       [...TIER2, ...STATIC].forEach(start);
       // keep the loader up a beat so it never just flashes
       await new Promise((r) =>
-        setTimeout(r, Math.max(0, 450 - (performance.now() - t0)))
+        setTimeout(r, Math.max(0, 450 - (performance.now() - t0))),
       );
       if (alive) setReady(true);
     })();
@@ -185,7 +185,7 @@ export const Home = () => {
         .filter(
           (el) =>
             !el.classList.contains('hero-layer') &&
-            !el.classList.contains('cta-layer')
+            !el.classList.contains('cta-layer'),
         )
         .forEach((el) => {
           const name = el.dataset.name;
@@ -201,7 +201,7 @@ export const Home = () => {
             tl.from(
               el,
               { y: startY(), duration: 2.2, ease: 'power3.out' },
-              0.2
+              0.2,
             );
           } else {
             // Not downloaded yet: hidden now, rises in when it arrives.
@@ -213,7 +213,7 @@ export const Home = () => {
                 gsap.fromTo(
                   el,
                   { autoAlpha: 1, y: startY() },
-                  { y: 0, duration: 1.8, ease: 'power3.out' }
+                  { y: 0, duration: 1.8, ease: 'power3.out' },
                 );
             });
           }
@@ -221,7 +221,7 @@ export const Home = () => {
       tl.from(
         '.hero-in',
         { y: 36, opacity: 0, duration: 0.9, ease: 'power3.out', stagger: 0.13 },
-        1.1
+        1.1,
       );
       tl.from('.hiding', { opacity: 0, duration: 1 }, 1.4);
 
@@ -258,8 +258,9 @@ export const Home = () => {
       }));
       const tgt = { x: 0, y: 0 };
       const cur = { x: 0, y: 0 };
-      const touchFirst = !window.matchMedia('(hover: hover) and (pointer: fine)')
-        .matches;
+      const touchFirst = !window.matchMedia(
+        '(hover: hover) and (pointer: fine)',
+      ).matches;
       let lastInput = performance.now();
       let hasGyro = false;
       let raf = 0;
@@ -299,7 +300,10 @@ export const Home = () => {
         render();
         const settled =
           Math.abs(tgt.x - cur.x) < 0.0004 && Math.abs(tgt.y - cur.y) < 0.0004;
-        raf = settled && !(touchFirst && !hasGyro) ? 0 : requestAnimationFrame(tick);
+        raf =
+          settled && !(touchFirst && !hasGyro)
+            ? 0
+            : requestAnimationFrame(tick);
       };
       const wake = () => {
         if (!raf) {
@@ -418,7 +422,7 @@ export const Home = () => {
                   </p>
                 </div>
               </div>
-            )
+            ),
           )}
           <div
             className='layer cta-layer'
@@ -428,29 +432,29 @@ export const Home = () => {
             data-rotation='0.05'
             data-distance='0'>
             <div className='cta-wrap'>
-                  <div className='hero-cta hero-in'>
-                    <button
-                      type='button'
-                      onClick={() => navigate('/main')}
-                      className='cssbuttons-io-button'>
-                      Explore
-                      <div className='btn_icon'>
-                        <svg
-                          xmlns='http://www.w3.org/2000/svg'
-                          viewBox='0 0 24 24'
-                          width='24'
-                          height='24'
-                          aria-hidden='true'>
-                          <path
-                            fill='none'
-                            d='M0 0h24v24H0z'></path>
-                          <path
-                            fill='currentColor'
-                            d='M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z'></path>
-                        </svg>
-                      </div>
-                    </button>
+              <div className='hero-cta hero-in'>
+                <button
+                  type='button'
+                  onClick={() => navigate('/main')}
+                  className='cssbuttons-io-button'>
+                  Explore
+                  <div className='btn_icon'>
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      viewBox='0 0 24 24'
+                      width='24'
+                      height='24'
+                      aria-hidden='true'>
+                      <path
+                        fill='none'
+                        d='M0 0h24v24H0z'></path>
+                      <path
+                        fill='currentColor'
+                        d='M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z'></path>
+                    </svg>
                   </div>
+                </button>
+              </div>
             </div>
           </div>
           <Picture

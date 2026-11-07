@@ -162,8 +162,11 @@ export const Main = ({ isClicked, toggleTheme }) => {
           <button
             type='button'
             className='link-btn'
-            onClick={() => window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' })}>
-            Back to top <i
+            onClick={() =>
+              window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' })
+            }>
+            Back to top{' '}
+            <i
               className='fa-solid fa-arrow-up'
               aria-hidden='true'></i>
           </button>
@@ -198,42 +201,42 @@ export const Main = ({ isClicked, toggleTheme }) => {
               <div className='content'>
                 <p>Share this link via</p>
                 <ul className='icons'>
-                          <a
- aria-label='Share on LinkedIn'
-                            href='https://www.linkedin.com/shareArticle?url=https://my-webfolio.netlify.app/'
-                            target='_blank'
-                            rel='noreferrer'>
-                            <i className='fab fa-linkedin'></i>
-                          </a>
-                          <a
- aria-label='Share on Twitter'
-                            href='https://twitter.com/intent/tweet?url=https://my-webfolio.netlify.app/&text=Hey,%20checkout%20this%20web-folio...!!!%0a&via=Priyanshu_Baran'
-                            target='_blank'
-                            rel='noreferrer'>
-                            <i className='fab fa-twitter'></i>
-                          </a>
-                          <a
- aria-label='Share on Facebook'
-                            href='https://www.facebook.com/sharer/sharer.php?u=https://my-webfolio.netlify.app/'
-                            target='_blank'
-                            rel='noreferrer'>
-                            <i className='fab fa-facebook'></i>
-                          </a>
-                          <a
- aria-label='Share on WhatsApp'
-                            href='https://api.whatsapp.com/send?text=Hey,%20checkout%20this%20web-folio...!!!%0ahttps://my-webfolio.netlify.app/'
-                            target='_blank'
-                            rel='noreferrer'>
-                            <i className='fab fa-whatsapp'></i>
-                          </a>
-                          <a
- aria-label='Share on Telegram'
-                            href='https://telegram.me/share/url?url=https://my-webfolio.netlify.app/&text=Hey,%20checkout%20this%20web-folio...!!!'
-                            target='_blank'
-                            rel='noreferrer'>
-                            <i className='fab fa-telegram-plane'></i>
-                          </a>
-                        </ul>
+                  <a
+                    aria-label='Share on LinkedIn'
+                    href='https://www.linkedin.com/shareArticle?url=https://my-webfolio.netlify.app/'
+                    target='_blank'
+                    rel='noreferrer'>
+                    <i className='fab fa-linkedin'></i>
+                  </a>
+                  <a
+                    aria-label='Share on Twitter'
+                    href='https://twitter.com/intent/tweet?url=https://my-webfolio.netlify.app/&text=Hey,%20checkout%20this%20web-folio...!!!%0a&via=Priyanshu_Baran'
+                    target='_blank'
+                    rel='noreferrer'>
+                    <i className='fab fa-twitter'></i>
+                  </a>
+                  <a
+                    aria-label='Share on Facebook'
+                    href='https://www.facebook.com/sharer/sharer.php?u=https://my-webfolio.netlify.app/'
+                    target='_blank'
+                    rel='noreferrer'>
+                    <i className='fab fa-facebook'></i>
+                  </a>
+                  <a
+                    aria-label='Share on WhatsApp'
+                    href='https://api.whatsapp.com/send?text=Hey,%20checkout%20this%20web-folio...!!!%0ahttps://my-webfolio.netlify.app/'
+                    target='_blank'
+                    rel='noreferrer'>
+                    <i className='fab fa-whatsapp'></i>
+                  </a>
+                  <a
+                    aria-label='Share on Telegram'
+                    href='https://telegram.me/share/url?url=https://my-webfolio.netlify.app/&text=Hey,%20checkout%20this%20web-folio...!!!'
+                    target='_blank'
+                    rel='noreferrer'>
+                    <i className='fab fa-telegram-plane'></i>
+                  </a>
+                </ul>
                 <p>Or copy link</p>
                 <div className={`field ${isActive && 'active'}`}>
                   <i className='url-icon uil uil-link'></i>
@@ -253,7 +256,7 @@ export const Main = ({ isClicked, toggleTheme }) => {
               </div>
             </div>
           </>,
-          document.body
+          document.body,
         )}
     </>
   );

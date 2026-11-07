@@ -9,11 +9,21 @@ export const fadeUp = {
   show: (i = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.55, delay: i * 0.08, ease: [0.22, 0.61, 0.36, 1] },
+    transition: {
+      duration: 0.55,
+      delay: i * 0.08,
+      ease: [0.22, 0.61, 0.36, 1],
+    },
   }),
 };
 
-export const Reveal = ({ as = 'div', index = 0, className, children, ...rest }) => {
+export const Reveal = ({
+  as = 'div',
+  index = 0,
+  className,
+  children,
+  ...rest
+}) => {
   const Tag = motion[as];
   return (
     <Tag

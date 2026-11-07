@@ -113,7 +113,6 @@ html.vt-active .page *::before {
 
 /* Respect the OS "reduce motion" setting everywhere */
 @media (prefers-reduced-motion: reduce) {
-
   *,
   *::before,
   *::after {

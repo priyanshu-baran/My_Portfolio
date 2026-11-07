@@ -42,8 +42,8 @@ export const preloadImages = (urls, timeout = 4500) =>
             const img = new Image();
             img.onload = img.onerror = res;
             img.src = src;
-          })
-      )
+          }),
+      ),
     ).then(() => {
       clearTimeout(timer);
       finish();
